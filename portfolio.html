@@ -1,76 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gallery</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            text-align: center;
-            color: #333;
-            background-color: #f9f9f9;
             margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #000000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px;
+            /* background: #333; */
+            color: #fff;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
             padding: 20px;
         }
-        h3 {
-            font-size: 24px;
-            margin-bottom: 30px;
+
+        .gallery-item {
+            flex-basis: calc(25% - 20px);
+            /* Subtract the gap size */
+            margin: 10px;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .project-container {
-            margin-bottom: 30px;
-        }
-        .project-container img {
-            width: 90%;
-            max-width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            margin-bottom: 10px;
-        }
-        .project-container a {
+
+        .gallery-item img {
+            width: 100%;
             display: block;
-            margin: 10px auto;
-            color: #007aff;
-            text-decoration: none;
+        }
+
+        .caption {
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px;
             font-size: 18px;
-            font-weight: bold;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .gallery-item {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-item {
+                flex-basis: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
-    <h3>Computer Graphics Portfolio</h3>
 
-    <div class="project-container">
-        <img src="computer graphics/proj1/images/illustration.png" alt="Project 1 Image" />
-        <a href="computer graphics/proj1/index.html">Rasterizer</a>
+    <div class="header">
+        <h1>MY PORTFOLIO</h1>
+        <p></p>
     </div>
 
-    <div class="project-container">
-        <img src="computer graphics/proj2/images/task2_1.png" alt="Project 2 Image" />
-        <a href="computer graphics/proj2/index.html">Mesh Edit</a>
+    <div class="gallery">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item">
+            <a href="computer graphics.html"> <!-- Update with the actual link to your detail page -->
+                <img src="computer graphics/proj3-1/images/part4/bunny_m_100.png" alt="Gallery Image 1">
+                <div class="caption">Computer Graphics</div>
+            </a>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item">
+            <a href="photography-detail.html"> <!-- Update with the actual link to your detail page -->
+                <img src="photography/img_1.JPG" alt="Gallery Image 2">
+                <div class="caption">Photography</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="game-design-detail.html"> <!-- Update with the actual link to your detail page -->
+                <img src="game design/pilot richard/pilot richard.jpg" alt="Gallery Image 3">
+                <div class="caption">Game Design</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="hci-detail.html"> <!-- Update with the actual link to your detail page -->
+                <img src="human computer interaction/drawing shape.png" alt="Gallery Image 4">
+                <div class="caption">Human Computer Interaction</div>
+            </a>
+        </div>
     </div>
 
-    <div class="project-container">
-        <img src="computer graphics/proj3-1/images/part4/bunny_m_100.png" alt="Project 3-1 Image" />
-        <a href="computer graphics/proj3-1/index.html">Pathtracer-1</a>
+
+
+    <!-- More gallery items... -->
     </div>
 
-    <div class="project-container">
-        <img src="computer graphics/proj3-2/images/part4/CBdragon_b_0_4.png" alt="Project 3-2 Image" />
-        <a href="computer graphics/proj3-2/index.html">Pathtracer-2</a>
-    </div>
-
-    <div class="project-container">
-        <img src="computer graphics/proj4/images/part5/5_10.png" alt="Project 4 Image" />
-        <a href="computer graphics/proj4/index.html">Cloth Simulator</a>
-    </div>
-
-    <script>
-        var links = document.getElementsByTagName("a");
-        var baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
-
-        for (var i = 0; i < links.length; i++) {
-            var link = links[i];
-            var newHref = baseUrl + link.getAttribute("href");
-            link.setAttribute("href", newHref);
-        }
-    </script>
 </body>
+
 </html>

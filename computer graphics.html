@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            color: #007aff;
+            background-color: #111111;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .project-container {
+            margin-bottom: 30px;
+        }
+
+        .project-container img {
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 10px;
+        }
+
+        .project-container a {
+            display: block;
+            margin: 10px auto;
+            color: #007aff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Computer Graphics Portfolio</h3>
+
+    <div class="project-container">
+        <a href="computer graphics/proj1/index.html">
+            <img src="computer graphics/proj1/images/illustration.png" alt="Project 1 Image" />
+            <div>Rasterizer</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="computer graphics/proj2/index.html">
+            <img src="computer graphics/proj2/images/task2_1.png" alt="Project 2 Image" />
+            <div>Mesh Edit</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="computer graphics/proj3-1/index.html">
+            <img src="computer graphics/proj3-1/images/part4/bunny_m_100.png" alt="Project 3-1 Image" />
+            <div>Pathtracer-1</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="computer graphics/proj3-2/index.html">
+            <img src="computer graphics/proj3-2/images/part4/CBdragon_b_0_4.png" alt="Project 3-2 Image" />
+            <div>Pathtracer-2</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="computer graphics/proj4/index.html">
+            <img src="computer graphics/proj4/images/part5/5_10.png" alt="Project 4 Image" />
+            <div>Cloth Simulator</div>
+        </a>
+    </div>
+    
+
+    <script>
+        var links = document.getElementsByTagName("a");
+        var baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
+
+        for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+            var newHref = baseUrl + link.getAttribute("href");
+            link.setAttribute("href", newHref);
+        }
+    </script>
+</body>
+
+</html>
