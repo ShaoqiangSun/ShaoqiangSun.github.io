@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href=index.css>
+</head>
+
+<body>
+    <h1>Drawing Webpage</h1>
+    <p class="prompt"><b>Draw and erase anything you want!</b></p>
+
+    <hr>
+    <!--  define a canvas (5pts) -->
+    <!--  your code is here -->
+    <canvas id="canvas" class="canvasStyle"></canvas>
+
+    <!--  define two buttons which are used for drawing and erasing 
+          and label the two buttons as draw and erase (6pts) -->
+    <!--  your code is here -->
+    <div class="button">
+        <button onclick="click_button('draw');">draw</button>
+        <button onclick="click_button('erase');">erase</button>
+    </div>
+
+    <!--  define three radios which are used for changing colors (green, red, and blue)
+          and label the three radios as green, red, and blue (9pts)-->
+    <!--  your code is here -->
+    <div class="radio">
+        <label>
+            <input type="radio" id="green" name="linecolor" value="#00ff00"> Green
+        </label>
+        <label>
+            <input type="radio" id="red" name="linecolor" value="#ff0000"> Red
+        </label>
+        <label>
+            <input type="radio" id="blue" name="linecolor" value="#0000ff"> Blue
+        </label>
+    </div>
+
+    <!--  define a range slider which are used for controling the line width
+           , label it as "Line Width" and show the corresponding value below the slider bar (5pts)-->
+    <!--  your code is here -->
+    <div class="slidecontainer">
+        <input type="range" id="linecap" min="1" max="10" value="5" class="slider">
+        <label for="linecap" class="lineWidth">Line Width</label>
+        <p class="value">Value: <span id="value"></span></p>
+    </div>
+
+    <script src="src/index.js"></script>
+</body>
+
+</html>

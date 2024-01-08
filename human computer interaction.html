@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            color: #007aff;
+            background-color: #111111;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .project-container {
+            margin-bottom: 30px;
+        }
+
+        .project-container img {
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 10px;
+        }
+
+        .project-container a {
+            display: block;
+            margin: 10px auto;
+            color: #007aff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Human Computer Interaction Portfolio</h3>
+
+    <div class="project-container">
+        <a href="human computer interaction/Drawing Webpage/index.html">
+            <!-- <img src="" alt="Drawing Webpage" /> -->
+            <div>Drawing Webpage</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="human computer interaction/Drawing Shape Webpage/index.html">
+            <!-- <img src="" alt="Light Travel" /> -->
+            <div>Drawing Shape Webpage</div>
+        </a>
+    </div>
+    
+    <div class="project-container">
+        <a href="human computer interaction/Scalable Bar Chart/index.html">
+            <!-- <img src="" alt="Scalable Bar Chart" /> -->
+            <div>Scalable Bar Chart</div>
+        </a>
+    </div>
+    
+    
+    <script>
+        var links = document.getElementsByTagName("a");
+        var baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf("/") + 1);
+
+        for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+            var newHref = baseUrl + link.getAttribute("href");
+            link.setAttribute("href", newHref);
+        }
+    </script>
+</body>
+
+</html>
