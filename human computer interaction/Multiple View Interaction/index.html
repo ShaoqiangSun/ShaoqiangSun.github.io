@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery with Video</title>
+
+    <style>
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+        .image-gallery img {
+            margin: 10px;
+
+        }
+
+        body {
+            text-align: center;
+
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+
+            align-items: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Multiple View Interaction</h1>
+    <p>The project, which cannot be executed statically in a browser, is instead showcased through a series of images
+        and a video presented here.</p>
+
+    <div class="video-container">
+        <video controls>
+            <source src="images/video.mp4" type="video/mp4">
+
+        </video>
+    </div>
+
+
+    <div class="image-gallery">
+        <img src="images/1.png" alt="Image 1">
+        <img src="images/2.png" alt="Image 2">
+        <img src="images/3.png" alt="Image 3">
+        <img src="images/4.png" alt="Image 4">
+        <img src="images/5.png" alt="Image 5">
+        <img src="images/6.png" alt="Image 6">
+        <img src="images/7.png" alt="Image 7">
+        <img src="images/8.png" alt="Image 8">
+    </div>
+
+
+
+
+</body>
+
+</html>

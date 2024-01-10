@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Game Engine Effect Portfolio</h1>
+    <p>The video showcases a range of effects implemented using Unreal Engine 4, including the UMG interface, skeletal
+        animation, physics effects, and rendering effects.</p>
+
+    <div class="video-container">
+        <video controls>
+            <source src="UMG interface.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h3 class="video-title">UMG interface</h3>
+
+        <video controls>
+            <source src="skeletal animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h3 class="video-title">skeletal animation</h3>
+
+        <video controls>
+            <source src="physics effects.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h3 class="video-title">physics effects</h3>
+
+        <video controls>
+            <source src="rendering effects.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <h3 class="video-title">rendering effects</h3>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111111;
+            /* 深色背景 */
+            color: #fff;
+            /* 白色文本 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /* 居中标题 */
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            /* 设置Flexbox布局为竖直方向 */
+            align-items: center;
+            /* 水平居中 */
+            gap: 10px;
+            padding: 20px;
+        }
+
+        
+        .horizontal {
+            width: 900px;
+            /* 横向图片的宽度 */
+            height: 600px;
+            /* 横向图片的高度 */
+        }
+
+        
+        .vertical {
+            width: 600px;
+            /* 竖向图片的宽度 */
+            height: 900px;
+            /* 竖向图片的高度 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1></h1>
+    <div class="gallery">
+        <img src="n_1.JPG" alt="Image 1" class="horizontal">
+        <img src="n_2.JPG" alt="Image 2" class="horizontal">
+        <img src="n_3.JPG" alt="Image 3" class="horizontal">
+        <!-- 添加更多图片 -->
+    </div>
+
+</body>
+
+</html>
