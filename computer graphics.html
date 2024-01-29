@@ -42,7 +42,7 @@
             max-width: 500px;
         }
 
-        /* 导航栏样式 */
+        
         .navbar {
             position: fixed;
             top: 0;
@@ -51,7 +51,7 @@
             color: white;
             padding: 10px 0;
             text-align: center;
-            z-index: 1000; /* 确保导航栏位于其他内容之上 */
+            z-index: 1000;
         }
 
         .navbar a {
@@ -66,9 +66,13 @@
             color: black;
         }
 
-        /* 防止内容被导航栏遮挡 */
+        
         body {
-            padding-top: 50px; /* 根据导航栏高度进行调整 */
+            padding-top: 50px;
+        }
+
+        a {
+            color: white;
         }
     </style>
 </head>
@@ -81,15 +85,17 @@
 
     <h3>Computer Graphics Portfolio</h3>
 
-    <!-- <div class="navbar">
-        <a href="#highlight">Highlight</a>
-        <a href="#specification">Specification</a>
-    </div> -->
-
     
     <h3 id="highlight results">Highlight Results</h3>
+    <a href="#Rasterizer">Rasterizer</a>
+    <a href="#Mesh Edit">Mesh Edit</a>
+    <a href="#Pathtracer-1">Pathtracer-1</a>
+    <a href="#Pathtracer-2">Pathtracer-2</a>
+    <a href="#Cloth Simulator">Cloth Simulator</a>
 
-    <h4>Rasterizer</h4>
+    <br><br><br><br>
+
+    <h4 id="Rasterizer">Rasterizer</h4>
     <div>
         <img src="computer graphics/proj1/images/task2_1.png" class="highlight">
         <img src="computer graphics/proj1/images/task2_4.png" class="highlight">
@@ -112,7 +118,7 @@
 
 
 
-    <h4>Mesh Edit</h4>
+    <h4 id="Mesh Edit">Mesh Edit</h4>
     <div>
         <img src="computer graphics/proj2/images/task1_2.png" class="highlight">
         <img src="computer graphics/proj2/images/task1_6.png" class="highlight">
@@ -140,7 +146,7 @@
         <img src="computer graphics/proj2/images/task6_13.png" class="highlight">
     </div>
 
-    <h4>Pathtracer-1</h4>
+    <h4 id="Pathtracer-1">Pathtracer-1</h4>
     <div>
         <img src="computer graphics/proj3-1/images/part2/maxplanck_normal.png" class="highlight">
         <img src="computer graphics/proj3-1/images/part2/blob_normal.png" class="highlight">
@@ -170,7 +176,7 @@
         <img src="computer graphics/proj3-1/images/part5/CBbunny_2048_rate.png" class="highlight">
     </div>
 
-    <h4>Pathtracer-2</h4>
+    <h4 id="Pathtracer-2">Pathtracer-2</h4>
     <div>
         <img src="computer graphics/proj3-2/images/part1/CBspheres_m_1.png" class="highlight">
         <img src="computer graphics/proj3-2/images/part1/CBspheres_m_2.png" class="highlight">
@@ -201,7 +207,7 @@
         <img src="computer graphics/proj3-2/images/part4/CBdragon_b_0_4.png" class="highlight">
     </div>
 
-    <h4>Cloth Simulator</h4>
+    <h4 id="Cloth Simulator">Cloth Simulator</h4>
     <div>
         <img src="computer graphics/proj4/images/part1/1_1.png" class="highlight">
         <img src="computer graphics/proj4/images/part1/1_2.png" class="highlight">
