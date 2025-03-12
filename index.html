@@ -1,12 +1,140 @@
-<html>
-	<head>
-	</head>
-	<body>
-		
-		<br><br>
-		<a href="portfolio.html">My Portfolio</a>
-		<br><br>
-		
-	</body>
-	
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dennis' Personal Website</title>
+  <style>
+    /* body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+    } */
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      background-image: url('photography/pittsburgh/DSC_6046.JPG');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+    }
+
+    .name-and-title {
+      color: #FFF; /* 文字颜色改为白色，适合深色背景 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* 让内容填满整个视口 */
+      text-align: center;
+    }
+
+    
+    .hero-content {
+      width: 80%;
+      max-width: 800px;
+    }
+
+    
+    .name {
+      font-size: 5vw; /* 根据屏幕宽度自适应 */
+      font-weight: bold;
+      text-transform: uppercase; /* 全大写 */
+      letter-spacing: 4px; /* 字母间距 */
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* 添加文字阴影，增强可读性 */
+      margin-bottom: 10px; /* 控制与职位的间距 */
+    }
+
+    .job-title-container {
+      display: flex;
+      justify-content: center;  /* 水平居中 */
+      align-items: center;  /* 垂直居中（可选） */
+      width: 100%;  /* 让整个职位栏占满容器宽度 */
+      
+    }
+
+    .job-title {
+      font-size: 2.5vw;  /* 根据屏幕宽度自适应 */
+      font-weight: lighter;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+      margin-top: 10px;
+      white-space: nowrap;  /* 强制不换行 */
+      text-align: center;  /* 确保文本居中 */
+    }
+    
+
+
+
+    .navbar {
+      position: relative;         /* 使内部元素可使用绝对定位 */
+      height: 60px;              /* 给导航栏一个固定高度，便于定位 */
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 0 20px;           /* 左右留一些边距 */
+      display: flex;             /* 让导航栏内元素可用 flex 布局（可选）*/
+      align-items: center;       /* 垂直居中 */
+    }
+
+    .logo {
+      position: absolute;
+      left: 20px;                /* 距离左侧20px */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.5em;
+    }
+
+    /* .nav-links {
+      
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    } */
+
+    .nav-links {
+      margin-left: auto;  /* 让导航链接推到右侧 */
+      display: flex;
+      gap: 20px;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">Dennis' Website</div>
+    <div class="nav-links">
+      <a href="introduction/index.html">About Me</a>
+      <a href="projects/index.html">Projects</a>
+      <a href="photography/photography.html">Photo Gallery</a>
+      <a href="contact/index.html">Contact</a>
+    </div>
+  </div>
+
+  <div class="name-and-title">
+    <div class="hero-content">
+      <div class="name">Dennis Sun</div>
+      <div class="job-title-container">
+        <div class="job-title">Game Developer • Technical Artist • Photographer</div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
 </html>
