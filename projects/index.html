@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #000000;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px;
+            /* background: #333; */
+            color: #fff;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            flex-basis: calc(25% - 20px);
+            /* Subtract the gap size */
+            margin: 10px;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* .gallery-item img {
+            width: 100%;
+            display: block;
+        } */
+
+        .gallery-item img {
+            width: 480px;
+            
+            height: 270px;
+            
+            object-fit: cover;
+            
+        }
+
+
+        .caption {
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .gallery-item {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>PROJECTS</h1>
+        <p></p>
+    </div>
+
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <a href="../game development/index.html">
+                <img src="../game development/light and shadow 1.png" alt="Gallery Image 1">
+                <div class="caption">Game Development</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="../computer graphics/computer graphics.html">
+                <img src="../computer graphics/proj3-1/images/part4/bunny_m_100.png" alt="Gallery Image 1">
+                <div class="caption">Computer Graphics</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="../vfx/index.html">
+                <img src="../vfx/spinning firework/shaoqias_asst2_sshot2.png" alt="Gallery Image 5">
+                <div class="caption">VFX</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="../code sample/code sample.html">
+                <img src="../code sample/code sample.png" alt="Gallery Image 2">
+                <div class="caption">Code Samples</div>
+            </a>
+        </div>
+
+
+        <div class="gallery-item">
+            <a href="../game design/game design.html">
+                <img src="../game design/pilot richard/images/pilot richard.jpg" alt="Gallery Image 3">
+                <div class="caption">Game Design</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="../human computer interaction/human computer interaction.html">
+                <img src="../human computer interaction/drawing shape.png" alt="Gallery Image 4">
+                <div class="caption">Human-Computer Interaction</div>
+            </a>
+        </div>
+
+        
+
+        <!-- <div class="gallery-item">
+            <a href="../photography/photography.html">
+                <img src="../photography/ny/1.jpg" alt="Gallery Image 6">
+                <div class="caption">Photography</div>
+            </a>
+        </div> -->
+
+
+    </div>
+
+
+
+    <!-- More gallery items... -->
+    </div>
+
+</body>
+
+</html>

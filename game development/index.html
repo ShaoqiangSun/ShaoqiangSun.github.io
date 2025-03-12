@@ -7,10 +7,13 @@
     <title>Video Display</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
         }
 
         
@@ -28,50 +31,179 @@
             text-align: center;
         }
 
+        .game-introduction {
+            text-align: center; /* Centers the text */
+            max-width: 60%; /* Limits the width to avoid full-page stretching */
+            margin: 0 auto; /* Centers the block horizontally */
+            padding: 20px;
+        }
+
+        /* Copied from vfx */
+        .horizontal {
+            width: 900px;
+            
+            height: 600px;
+            
+        }
+        
+
     </style>
 </head>
 
 <body>
-    <h1>Game Engine Effect and Mini-game Portfolio</h1>
-    <p>The video showcases a range of effects implemented using Unreal Engine 4, including the UMG interface, skeletal
-        animation, physics effects, and rendering effects.</p>
-
+    <h1>Game Development Portfolio</h1>
+   
     <div class="video-container">
+
+
+
+        <header class="game-introduction">
+            <h1>VR Space Game</h1>
+            <p>
+                In this two-player game, a spaceship has been damaged by a meteorite and is now broken. 
+            The player inside the spaceship must communicate with the player at the ground station to repair it. 
+            Both players must rely on each other, sharing critical information to make progress in fixing the spaceship.
+
+            The player aboard the spaceship uses a VR headset, while the ground station player interacts through a PC. I was responsible for developing the PC-side gameplay. 
+            </p>
+        </header>
+        <video controls>
+            <source src="vr space game.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls>
+            <source src="SpaceGamePC2LowRes.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+
+        
+
+        <header class="game-introduction">
+            <h1>Light and Shadow</h1>
+            <p>
+                In this four-player game, three players assume the roles of ghost babies (hiders) while one player takes on the role of the ghost mom (seeker). 
+                The ghost babies are controlled using an Xbox controller, whereas the ghost mom is operated via an eye tracker.
+
+                The objective for the ghost babies is to escape from the map through a gate. 
+                To achieve this, they must step on a ground trigger that opens the gate. 
+                However, the ghost mom can thwart their escape by gazing at a separate gaze trigger, which shuts down the gate. In addition, her primary method of capturing ghost babies is by casting a light on them with her gaze. Ghost babies can avoid detection by hiding behind obstacles scattered across the map. If a ghost baby is caught, it is sent back to the cemetery, which serves as the spawn point.
+
+                I was responsible for programming the seeker’s gameplay mechanics as well as developing the user interface.
+            </p>
+        </header>
+        <video controls>
+            <source src="Team40Recording.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+
+
+
+        <header class="game-introduction">
+            <h1>Metro Core</h1>
+            <p>
+                In this VR game, the player uses a DV camera to uncover and document strange anomalies hidden throughout different levels. 
+                To record a strange object, the player must aim the DV camera at it and keep it in focus for a certain period.
+                The journey unfolds as the player travels by metro, disembarking at each station, which serves as a distinct level. 
+                However, if the player fails to record all the strange objects before returning to the metro, the next station will mysteriously loop back to the previous one, trapping them in an eerie cycle.
+                For this project, I was responsible for developing the water shader in Level 2 and implementing the black fog effect that shrouds both sides of the station, enhancing the game's atmospheric tension.
+            </p>
+        </header>
+        <video controls>
+            <source src="BVWround2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls>
+            <source src="water shader.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img src="black fog.png" class="horizontal">
+        
+        <header class="game-introduction">
+            <h1>Mouse Dishwashing Game</h1>
+            <p>
+                In this game, the player takes on the role of a mouse imprisoned by a cat. To regain freedom, the mouse must earn enough money—by scrubbing plates clean and delivering them on time. However, failing to send out a cleaned plate in time will result in a penalty, costing the mouse hard-earned money.
+                Each plate contains two types of objects: stains and food. As the mouse tirelessly washes dishes, hunger gradually sets in. To replenish energy, he can eat the food left on the plates—but be careful! The cleaning tool might accidentally scrub away the food along with the stains.
+                Adding to the challenge, the mouse's boss—the watchful cat—will occasionally inspect the dishwashing station. If the mouse gets caught slacking or making mistakes, the consequences are dire… he'll become the cat’s next meal, ending the game!
+                Can you outsmart the cat, wash the dishes efficiently, and earn your way to freedom?
+
+                For this game, I was responsible for implementing the random plate generation system, creating the stain and tool interactions, developing the UI system, and integrating the background music (BGM) to enhance the overall gameplay experience.
+
+            </p>
+        </header>
+        <video controls>
+            <source src="playtest1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <video controls>
+            <source src="playtest2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Minimap Effect</h1>
+        <video controls>
+            <source src="minimap.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Demo</h1>
+        <video controls>
+            <source src="firstgame.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Roll a Ball</h1>
+        <video controls>
+            <source src="roll a ball.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <p>The following videos showcase a range of effects implemented using Unreal Engine 4, including the UMG interface, skeletal
+            animation, physics effects, and rendering effects.</p>
+
+        <h1>UMG interface</h1>
+        <!-- <h3 class="video-title">UMG interface</h3> -->
         <video controls>
             <source src="1.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <h3 class="video-title">UMG interface</h3>
-
+        
+        <h1>skeletal animation</h1>
+        <!-- <h3 class="video-title">skeletal animation</h3> -->
         <video controls>
             <source src="2.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <h3 class="video-title">skeletal animation</h3>
-
+        
+        <h1>physics effects</h1>
+        <!-- <h3 class="video-title">physics effects</h3> -->
         <video controls>
             <source src="3.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <h3 class="video-title">physics effects</h3>
 
+        <h1>rendering effects</h1>
+        <!-- <h3 class="video-title">rendering effects</h3> -->
         <video controls>
             <source src="4.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <h3 class="video-title">rendering effects</h3>
-
+        
+        <!-- <h1>Snake-Victory</h1>
+        <h3 class="video-title">Snake-Victory</h3>
         <video controls>
             <source src="5.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <h3 class="video-title">Snake-Victory</h3>
-
+        
+        <h1>Snake-Defeat</h1>
+        <h3 class="video-title">Snake-Defeat</h3>
         <video controls>
             <source src="6.mp4" type="video/mp4">
             Your browser does not support the video tag.
-        </video>
-        <h3 class="video-title">Snake-Defeat</h3>
+        </video> -->
+        
 
     </div>
 </body>

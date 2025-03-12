@@ -1,140 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Gallery</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #000000;
-        }
+  <meta charset="UTF-8" />
+  <title>Dennis' Personal Website</title>
+  <style>
+    /* body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+    } */
 
-        .header {
-            text-align: center;
-            padding: 50px;
-            /* background: #333; */
-            color: #fff;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+      background-image: url('photography/pittsburgh/DSC_6046.JPG');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      
+    }
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
+    .name-and-title {
+      color: #FFF; /* 文字颜色改为白色，适合深色背景 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* 让内容填满整个视口 */
+      text-align: center;
+    }
 
-        .gallery-item {
-            flex-basis: calc(25% - 20px);
-            /* Subtract the gap size */
-            margin: 10px;
-            color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    
+    .hero-content {
+      width: 80%;
+      max-width: 800px;
+    }
 
-        /* .gallery-item img {
-            width: 100%;
-            display: block;
-        } */
+    
+    .name {
+      font-size: 5vw; /* 根据屏幕宽度自适应 */
+      font-weight: bold;
+      text-transform: uppercase; /* 全大写 */
+      letter-spacing: 4px; /* 字母间距 */
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* 添加文字阴影，增强可读性 */
+      margin-bottom: 10px; /* 控制与职位的间距 */
+    }
 
-        .gallery-item img {
-            width: 480px;
-            
-            height: 270px;
-            
-            object-fit: cover;
-            
-        }
+    .job-title-container {
+      display: flex;
+      justify-content: center;  /* 水平居中 */
+      align-items: center;  /* 垂直居中（可选） */
+      width: 100%;  /* 让整个职位栏占满容器宽度 */
+      
+    }
+
+    .job-title {
+      font-size: 2.5vw;  /* 根据屏幕宽度自适应 */
+      font-weight: lighter;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
+      margin-top: 10px;
+      white-space: nowrap;  /* 强制不换行 */
+      text-align: center;  /* 确保文本居中 */
+    }
+    
 
 
-        .caption {
-            background: rgba(0, 0, 0, 0.7);
-            text-align: center;
-            padding: 10px;
-            font-size: 18px;
-        }
 
-        /* Responsive adjustments */
-        @media (max-width: 900px) {
-            .gallery-item {
-                flex-basis: calc(50% - 20px);
-            }
-        }
+    .navbar {
+      position: relative;         /* 使内部元素可使用绝对定位 */
+      height: 60px;              /* 给导航栏一个固定高度，便于定位 */
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 0 20px;           /* 左右留一些边距 */
+      display: flex;             /* 让导航栏内元素可用 flex 布局（可选）*/
+      align-items: center;       /* 垂直居中 */
+    }
 
-        @media (max-width: 600px) {
-            .gallery-item {
-                flex-basis: 100%;
-            }
-        }
-    </style>
+    .logo {
+      position: absolute;
+      left: 20px;                /* 距离左侧20px */
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 1.5em;
+    }
+
+    /* .nav-links {
+      
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    } */
+
+    .nav-links {
+      margin-left: auto;  /* 让导航链接推到右侧 */
+      display: flex;
+      gap: 20px;
+    }
+
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+  </style>
 </head>
-
 <body>
 
-    <div class="header">
-        <h1>MY PORTFOLIO</h1>
-        <p></p>
+  <div class="navbar">
+    <div class="logo">Dennis' Website</div>
+    <div class="nav-links">
+      <a href="introduction/index.html">About Me</a>
+      <a href="projects/index.html">Projects</a>
+      <a href="photography/photography.html">Photo Gallery</a>
+      <a href="contact/index.html">Contact</a>
     </div>
+  </div>
 
-    <div class="gallery">
-
-        <div class="gallery-item">
-            <a href="computer graphics.html"> <!-- Update with the actual link to your detail page -->
-                <img src="computer graphics/proj3-1/images/part4/bunny_m_100.png" alt="Gallery Image 1">
-                <div class="caption">Computer Graphics</div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="code sample/code sample.html"> <!-- Update with the actual link to your detail page -->
-                <img src="code sample/code sample.png" alt="Gallery Image 2">
-                <div class="caption">Code Samples</div>
-            </a>
-        </div>
-
-
-        <div class="gallery-item">
-            <a href="game design.html"> <!-- Update with the actual link to your detail page -->
-                <img src="game design/pilot richard/images/pilot richard.jpg" alt="Gallery Image 3">
-                <div class="caption">Game Design</div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="human computer interaction.html"> <!-- Update with the actual link to your detail page -->
-                <img src="human computer interaction/drawing shape.png" alt="Gallery Image 4">
-                <div class="caption">Human-Computer Interaction</div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="game development/index.html"> <!-- Update with the actual link to your detail page -->
-                <img src="game development/img.png" alt="Gallery Image 5">
-                <div class="caption">Game Engine Effect and Mini-game</div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="photography.html"> <!-- Update with the actual link to your detail page -->
-                <img src="photography/ny/1.jpg" alt="Gallery Image 6">
-                <div class="caption">Photography</div>
-            </a>
-        </div>
-
-
+  <div class="name-and-title">
+    <div class="hero-content">
+      <div class="name">Dennis Sun</div>
+      <div class="job-title-container">
+        <div class="job-title">Game Developer • Technical Artist • Photographer</div>
+      </div>
+      
     </div>
-
-
-
-    <!-- More gallery items... -->
-    </div>
+  </div>
 
 </body>
-
 </html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dennis' Personal Website</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #fafafa;
+    }
+
+    .navbar {
+      position: relative;         /* 使内部元素可使用绝对定位 */
+      height: 60px;              /* 给导航栏一个固定高度，便于定位 */
+      background-color: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 0 20px;           /* 左右留一些边距 */
+      display: flex;             /* 让导航栏内元素可用 flex 布局（可选）*/
+      align-items: center;       /* 垂直居中 */
+    }
+
+    .logo {
+      position: absolute;
+      left: 20px;                /* 距离左侧20px */
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.8em;
+    }
+
+    .nav-links {
+      /* 使链接容器在水平方向上居中 */
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">MyArtistSite</div>
+    <div class="nav-links">
+      <a href="../introduction/index.html">About Me</a>
+      <a href="../projects/index.html">Projects</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+</body>
+</html>

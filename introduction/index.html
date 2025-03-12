@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Me</title>
+  <style>
+    /* 页面整体样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      /* 将背景图片地址替换为你的图片路径或 URL */
+      background: url("trees.JPG") no-repeat center center fixed;
+      /* cover: 背景图填充整个区域并保持比例，可能会裁切图片 */
+      background-size: 100% 100%;
+      color: #333;
+    }
+
+    .about-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px auto;
+      max-width: 800px;
+      padding: 0 20px;
+      /* 可以使用半透明背景或其他方式让文字更容易阅读 */
+      background-color: rgba(255, 255, 255, 0);
+      border-radius: 8px;
+    }
+
+    /* 个人照片部分 */
+    .profile-img {
+      /* 这里可以根据需求设置图片的大小，比如固定宽度、高度自适应，或设置固定的宽高 */
+      width: 300px;         /* 你想要的矩形宽度 */
+      height: auto;         /* 高度自适应，或根据需要设置固定高度 */
+      border-radius: 0;     /* 删除圆形头像效果 */
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: auto;      /* 保证图片宽度自适应并保持比例 */
+      display: block;
+      object-fit: cover; /* 让图片填充容器，可能会被裁切 */
+    }
+
+    /* 文本介绍部分 */
+    .about-text {
+      max-width: 600px;
+      text-align: center;
+      line-height: 1.6;
+      color: #FFF;
+
+    }
+
+    .about-text h1 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: normal;
+      letter-spacing: 2px;
+
+      
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      
+      font-size: 1.4em;
+    }
+
+    /* 个性化签名，可以使用艺术字体 */
+    .signature {
+      margin-top: 40px;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 2em;
+      color: #555;
+    }
+
+    /* 如果想要在背景中添加一些艺术纹理或图案，可以在此添加自定义样式 */
+    /* body {
+      background: url("你的艺术背景图.jpg") no-repeat center center fixed;
+      background-size: cover;
+    } */
+  </style>
+</head>
+<body>
+
+  <div class="about-wrapper">
+    <!-- 个人照片 -->
+    <div class="profile-img">
+      <img src="photo_cropped.jpg" alt="Artist Photo" />
+    </div>
+
+    <!-- 文本介绍 -->
+    <div class="about-text">
+      <h1>Dennis Sun</h1>
+      <p>
+        I am a passionate Game Developer and Technical Artist with experience in Unity and Unreal Engine. 
+        My expertise lies in computer graphics and visual effects, and I’m driven to create immersive, visually striking VFX that captivate audiences and bring virtual worlds to life.
+      </p>
+      <p>
+        <!-- 如果想让页面更具艺术感，可以根据自己的审美在背景和字体上做更多个性化调整。
+        你也可以在此处添加一些链接，便于读者进一步了解你的作品和项目。 -->
+      </p>
+      <div class="signature">
+        <!-- [Dennis Sun] -->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
