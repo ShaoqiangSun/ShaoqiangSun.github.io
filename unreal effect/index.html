@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+        .game-introduction {
+            text-align: center; /* Centers the text */
+            max-width: 60%; /* Limits the width to avoid full-page stretching */
+            margin: 0 auto; /* Centers the block horizontally */
+            padding: 20px;
+        }
+
+        /* Copied from vfx */
+        .horizontal {
+            width: 900px;
+            
+            height: 600px;
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <h1>Effects made in Unreal Engine</h1>
+   
+    <div class="video-container">
+
+        <h1>Minimap Effect</h1>
+        <video controls>
+            <source src="minimap.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Demo</h1>
+        <video controls>
+            <source src="firstgame.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>Roll a Ball</h1>
+        <video controls>
+            <source src="roll a ball.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <p>The following videos showcase a range of effects implemented using Unreal Engine 4, including the UMG interface, skeletal
+            animation, physics effects, and rendering effects.</p>
+
+        <h1>UMG interface</h1>
+        <!-- <h3 class="video-title">UMG interface</h3> -->
+        <video controls>
+            <source src="1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <h1>skeletal animation</h1>
+        <!-- <h3 class="video-title">skeletal animation</h3> -->
+        <video controls>
+            <source src="2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <h1>physics effects</h1>
+        <!-- <h3 class="video-title">physics effects</h3> -->
+        <video controls>
+            <source src="3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h1>rendering effects</h1>
+        <!-- <h3 class="video-title">rendering effects</h3> -->
+        <video controls>
+            <source src="4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        
+
+    </div>
+</body>
+
+</html>
