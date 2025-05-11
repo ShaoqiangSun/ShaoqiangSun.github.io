@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+        .game-introduction {
+            text-align: center; /* Centers the text */
+            max-width: 60%; /* Limits the width to avoid full-page stretching */
+            margin: 0 auto; /* Centers the block horizontally */
+            padding: 20px;
+        }
+
+        /* Copied from vfx */
+        .horizontal {
+            width: 900px;
+            
+            height: 600px;
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <h1>Cinematic Demo in Unreal Engine 5</h1>
+   
+    <div class="video-container">
+
+
+
+        <header class="game-introduction">
+            <h1>Chinese Garden</h1>
+            <p>
+                This cinematic demo, created in Unreal Engine 5, showcases a mysterious character dancing within a forbidden Chinese Garden.
+                <br><br>
+                My contributions to this project include developing key materials such as the plaster walls and the wooden textures of the flying lanterns, utilizing Substance Designer, Substance Painter, and UE5's Material Editor.
+                I also designed the lighting setup—both environmental and character-focused—including atmospheric fog, flickering flying lanterns, and a three-point lighting system (key, fill, and back light) that casts dynamic shadows to enhance the cinematic mood.
+                Additionally, I engineered a custom terrain tool for generating underwater rocks and stones, allowing for flexible and art-directable terrain detailing. 
+
+            </p>
+        </header>
+        <video controls>
+            <source src="final render.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        
+
+        
+
+        
+        
+
+    </div>
+</body>
+
+</html>
