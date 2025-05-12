@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+        .game-introduction {
+            text-align: center; /* Centers the text */
+            max-width: 60%; /* Limits the width to avoid full-page stretching */
+            margin: 0 auto; /* Centers the block horizontally */
+            padding: 20px;
+        }
+
+        /* Copied from vfx */
+        .horizontal {
+            width: 900px;
+            
+            /* height: 600px; */
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <h1>Animation Demo in Unreal Engine 5</h1>
+   
+    <div class="video-container">
+
+
+
+        <header class="game-introduction">
+            <h1>Animation Production</h1>
+            <p>
+                In our animation, we present a two-minute story following four university students attending a team meeting. 
+                Each character embodies a distinct trait—ADHD, introversion, first-generation, or international student experiences—and the narrative is designed to reflect their unique challenges. 
+                We incorporate different plotlines, visual effects, and environments tailored to their perspectives, simulating the difficulties they face in team collaboration. 
+                This approach allows the audience to step into their world and understand their point of view.
+                <br><br>
+                My contributions to this project include serving as the team’s co-producer, participating in the motion capture for the first-generation character, creating cinematic sequences using Unreal Engine 5’s Sequencer, and editing and creating individual audio tracks for each character’s version in Adobe Premiere Pro.
+
+            </p>
+        </header>
+        <h2>Neutral Version</h2>
+        <video controls>
+            <source src="Base_Version.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>International Version</h2>
+        <video controls>
+            <source src="International_Version.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>ADHD Version</h2>
+        <video controls>
+            <source src="ADHD_Version.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>Introvert Version</h2>
+        <video controls>
+            <source src="Introvert_Version.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <h2>First-gen Version</h2>
+        <video controls>
+            <source src="FirstGen_Version.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+       
+
+        
+
+        
+        
+
+    </div>
+</body>
+
+</html>
