@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+        .game-introduction {
+            text-align: center;
+            max-width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        
+        .horizontal {
+            width: 900px;
+            
+            height: 600px;
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+   
+    <header class="game-introduction">
+        <h1>Mouse Dishwashing Game</h1>
+        <p>
+            In this game, the player takes on the role of a mouse imprisoned by a cat. To regain freedom, the mouse must earn enough money—by scrubbing plates clean and delivering them on time. However, failing to send out a cleaned plate in time will result in a penalty, costing the mouse hard-earned money.
+            Each plate contains two types of objects: stains and food. As the mouse tirelessly washes dishes, hunger gradually sets in. To replenish energy, he can eat the food left on the plates—but be careful! The cleaning tool might accidentally scrub away the food along with the stains.
+            Adding to the challenge, the mouse's boss—the watchful cat—will occasionally inspect the dishwashing station. If the mouse gets caught slacking or making mistakes, the consequences are dire… he'll become the cat’s next meal, ending the game!
+            Can you outsmart the cat, wash the dishes efficiently, and earn your way to freedom?
+
+            For this game, I was responsible for implementing the random plate generation system, creating the stain and tool interactions, developing the UI system, and integrating the background music (BGM) to enhance the overall gameplay experience.
+
+        </p>
+    </header>
+    <video width="1440" controls>
+        <source src="playtest1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <video width="1440" controls>
+        <source src="playtest2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+</body>
+
+</html>

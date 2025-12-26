@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+
+            background-color: #111111;
+            color: #fff;
+        }
+
+        
+        .video-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            gap: 20px; 
+        }
+        .video-container video {
+            width: 50%; 
+            
+        }
+        .video-title {
+            text-align: center;
+        }
+
+        .game-introduction {
+            text-align: center;
+            max-width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        
+        .horizontal {
+            width: 900px;
+            
+            height: 600px;
+            
+        }
+        
+
+    </style>
+</head>
+
+<body>
+   
+    <header class="game-introduction">
+        <h1>Metro Core</h1>
+        <p>
+            In this VR game, the player uses a DV camera to uncover and document strange anomalies hidden throughout different levels. 
+            To record a strange object, the player must aim the DV camera at it and keep it in focus for a certain period.
+            The journey unfolds as the player travels by metro, disembarking at each station, which serves as a distinct level. 
+            However, if the player fails to record all the strange objects before returning to the metro, the next station will mysteriously loop back to the previous one, trapping them in an eerie cycle.
+            For this project, I was responsible for developing the water shader in Level 2 and implementing the black fog effect that shrouds both sides of the station, enhancing the game's atmospheric tension.
+        </p>
+    </header>
+
+    <h3>Graphics Feature</h3>
+
+    <video width="1440" controls>
+        <source src="water shader.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <img src="black fog.png" width="1440">
+
+    <h3>Full Gameplay Demo</h3>
+    
+    <video width="1440" controls>
+        <source src="BVWround2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        
+</body>
+
+</html>
