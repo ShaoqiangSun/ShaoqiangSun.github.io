@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://graphics.cs.cmu.edu/courses/15-472-s26/A2/report-template.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>15-472-s26: A2 - Materials</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+figure {
+	margin: 10px -2em;
+	padding: 10px 2em;
+	width:100%;
+	background:#e8e8e8;
+}
+
+figcaption {
+	font-size:14px;
+	font-style:italic;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#e17dcd;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#c6aff8;
+}
+.atag.creative {
+	background:linear-gradient(0.35turn, #fcacff, #f9ab93, #76a1e4, #20953d);
+}
+
+</style>
+<!-- Load Chart.js for creating charts (documentation https://www.chartjs.org/docs/latest/ ) -->
+<script src="./15-472-s26_ A2 - Materials_files/chart.js"></script>
+</head>
+<body>
+<h1>A2: Materials
+<span class="subtitle">by <span class="placeholder">Dennis Sun (shaoqias)</span></span>
+</h1>
+
+<!-- of course, delete these class="placeholder" notes in your report: -->
+
+<p class="placeholder">
+Summarize, in about one paragraph, your approach to the materials assignment.
+How did you structure your code?
+What's cool about it? Are there parts you weren't able to complete?
+</p>
+
+<p>
+For A2, I implemented a small material pipeline that connects the S72 scene description to a PBR shading workflow based on image-based lighting (IBL). 
+I organized the system around a <code>MaterialSystem</code> responsible for parsing materials and textures, creating GPU resources, and ensuring that every material has valid bindings through the use of default fallback textures. 
+A separate precomputation step generates the environment lighting data used for diffuse and specular IBL so that most of the heavy computation is moved offline and the runtime shader remains simple and efficient. 
+This structure keeps the renderer modular and makes it easy to support multiple material types with a unified layout.
+<br><br>
+The most interesting part is that most of the heavy IBL computation is done offline, keeping the runtime shader compact while still supporting multiple material types through a unified descriptor layout.
+<br><br>
+One limitation is that displacement is not yet applied in shading and I didn't have enough time for A2-create.
+</p>
+
+<h2>My Model <span class="atag creative">A2-create</span></h2>
+
+<p class="placeholder">
+Describe the model and texture you created and include a screen recording showing it running in real-time:
+</p>
+
+<video>
+<!--
+  you can use the 'video' element to show your code running
+  Learn more at:
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+  Example: put the video file in a path near this .html
+  <source src="path/to/video" type="video/mp4" />
+-->
+</video>
+
+<p class="placeholder">
+Describe your creation process for the model and texture.
+</p>
+
+<h2>Using the Cube Utility</h2>
+
+<p class="placeholder">Provide a short overview of how to use your cube utility.</p>
+
+<p>
+The cube utility is a small preprocessing tool used to generate the environment lighting data required by the renderer's image-based lighting (IBL) pipeline. 
+Instead of performing expensive convolutions at runtime, this tool reads an input cubemap and produces pre-integrated lookup cubemaps that can be sampled efficiently during shading. 
+These generated maps are then loaded by the main renderer to provide diffuse irradiance and roughness-dependent specular reflections for PBR materials.
+</p>
+
+<h3>Command-line Arguments (Cube Utility)</h3>
+
+<p class="placeholder">
+Document the command-line arguments that can be used to control your cube utility.
+Include both the command-line arguments required by the assignment statement and any additional arguments or functions you decided to add.
+</p>
+
+<ul>
+
+<li class="placeholder">
+<code>cube <var>in.png</var> --lambertian <var>out.png</var></code> -- 
+read a cubemap from <code><var>in.png</var></code>, integrate it using direct integral (sum over texels in the cube), 
+and store the resulting diffuse irradiance cubemap as RGBE8 in <code><var>out.png</var></code>
+</li>
+
+<li class="placeholder">
+<code>cube <var>in.png</var> --ggx <var>out.png</var></code> -- 
+read a cubemap from <code><var>in.png</var></code>, convolve it with a GGX specular distribution over increasing roughness levels, 
+and store the resulting mip-chain as RGBE8 images 
+<code><var>out.1.png</var></code> through <code><var>out.N.png</var></code>
+</li>
+
+<li class="placeholder">
+<code>cube <var>in.png</var> --brdf-lut <var>out.raw</var></code> 
+generate a BRDF LUT for split-sum specular IBL and save it as a 16-bit raw binary file in <code><var>out.raw</var></code>.
+A debug visualization image is also written to the same directory using the name 
+<code><var>out_debug.png</var></code>, allowing the user to quickly inspect the LUT contents.
+</li>
+
+</ul>
+
+
+<h3>Command-line Arguments (Viewer)</h3>
+
+<p class="placeholder">
+Document the command-line arguments that can be used to control your viewer.
+This will probably be a copy of the section from your A1 report with a few new flags relating to tone mapping.
+</p>
+<ul>
+<li class="placeholder"><code>--scene <var>scene.s72</var></code> -- required -- load scene from <code><var>scene.s72</var></code></li>
+<li class="placeholder"><code>--camera <var>name</var></code> -- optional -- view the scene through the camera <code><var>name</var></code></li>
+<li class="placeholder"><code>--physical-device <var>name</var></code> -- optional -- use the physical device whose VkPhysicalDeviceProperties::deviceName matches <code><var>name</var></code></li>
+<li class="placeholder"><code>--drawing-size <var>w</var> <var>h</var></code> -- optional -- set the initial size of the drawable part of the window in physical pixels of width <code><var>w</var></code> and height <code><var>h</var></code></li>
+<li class="placeholder"><code>--culling <var>mode</var></code> -- optional -- sets the culling mode to be <code><var>none|frustum|bvh</var></code></li>
+<li class="placeholder"><code>--headless </code> -- optional -- if specified, run in headless mode (no windowing system connection), and read frame times and events from standard input. In headless mode, the flag --drawing-size specifies the size of the offscreen canvas that is rendered into </li>
+<li class="placeholder"><code>--test <var>mode</var></code> -- optional -- runs the A1-test section, <code><var>mode</var></code> can be <code><var>cpu</var></code> or <code><var>gpu</var></code>
+Under cpu mode, the program will automatically loads the test scene for cpu "cpu-bottleneck.s72"
+Under gpu mode, the program will load the scene from <code>--scene <var>scene.s72</var></code> argument</li>
+<li class="placeholder"><code>--culled-count <var>number</var></code> -- optional -- combined with <code>--test <var>cpu</var></code> argument to set the number of culled objects (outside the camera frustum) in the scene</li>
+<li class="placeholder"><code>--csv-file-name <var>file_name</var></code> -- optional -- in A1-test section, the user chosen log file name</li>
+<li class="placeholder">
+<code>--exposure <var>E</var></code> 
+scale computed radiance by <code>2<sup><var>E</var></sup></code> before tone mapping.
+This simulates camera exposure adjustment and is always applied prior to the tone-mapping operator.
+</li>
+<li class="placeholder">
+<code>--tone-map <var>mode</var></code> 
+select the tone-mapping operator used to convert HDR radiance to displayable color.
+Supported modes are:
+<code>linear</code> (no additional mapping after exposure) and
+<code>reinhard</code> (nonlinear compression of high luminance values).
+</li>
+</ul>
+
+<h2>Evidence</h2>
+
+<p class="placeholder">
+The purpose of this section is to get you to think critically about your code by providing evidence sufficient to demonstrate to course staff that it works.
+These thoughts may also help you improve the code as you work on it in A3 and beyond.
+</p>
+
+
+<h3>Environment Loading and Display <span class="atag">A2-env</span></h3>
+
+<p class="placeholder">
+What functions and data structures in your code are involved with loading environment cube maps and converting them from RGBE8 format to the format you chose to use for them on-GPU?
+(And what format did you choose for that?).
+</p>
+
+<p>
+Environment cubemap loading is handled inside <code>MaterialSystem</code>. The main entry points are
+<code>MaterialSystem::load_environment_map</code> (loads the scene’s radiance environment + GGX mip-stack) and
+<code>MaterialSystem::load_environment_map_diffuse()</code> (loads the pre-integrated lambertian irradiance cubemap). Both functions
+use <code>stbi_load</code> to read the RGBE8 PNGs into 8-bit RGBA bytes, then convert RGBE to linear floating-point RGB using the helper
+<code>decode_rgbe</code>. On the GPU, I store these cubemaps as
+<code>VK_FORMAT_R32G32B32A32_SFLOAT</code> cube images for simplicity and to preserve HDR precision. The relevant data structures are
+<code>Helpers::AllocatedImage env_cube</code> (specular prefiltered cubemap with multiple mip levels),
+<code>Helpers::AllocatedImage diffuse_cube</code> (diffuse irradiance cubemap), their corresponding <code>VkImageView</code>s, and <code>env_cube_sampler</code>.
+Upload from CPU to GPU is done through the helper routines
+<code>rtg.helpers.create_image</code>, <code>rtg.helpers.transfer_to_cubemap</code>, and
+<code>rtg.helpers.transfer_to_cubemap_level</code>, where the GGX stack is filled by loading <code>base.1.png</code> through <code>base.N.png</code> and copying each into the matching mip level.
+</p>
+
+<p class="placeholder">
+Provide evidence that your code can load environment maps and display <code>"environment"</code> and <code>"mirror"</code> materials.
+</p>
+
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Check-In.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<h3>Tone Mapping <span class="atag">A2-tone</span></h3>
+
+<p class="placeholder">
+Describe, in a few sentences, how your display code deals with tone mapping, and what you chose for your custom non-linear tone mapping curve.
+</p>
+<p>
+Tone mapping is handled entirely in the fragment shader after computing physically-based radiance values in linear space. 
+Each material first evaluates its radiance (Lambertian IBL, environment lookup, mirror reflection, or full PBR split-sum lighting), 
+and only then applies exposure and tone mapping. 
+The exposure value (stored in <code>World::TONE.x</code>) is applied as a power-of-two scale factor before the tone-mapping operator, 
+ensuring that exposure always precedes color compression regardless of the selected operator. 
+The tone-mapping mode (stored in <code>World::TONE.y</code>) is passed as an integer flag and evaluated inside a shared 
+<code>apply_tonemapping()</code> function used by all material types.
+</p>
+
+<p>
+In addition to the required linear operator (which performs no nonlinear modification after exposure), 
+I implemented a Reinhard tone-mapping curve as my custom nonlinear operator. 
+The Reinhard operator compresses high radiance values using a smooth rational mapping, 
+which preserves detail in bright highlights while preventing clipping and maintaining mid-tone contrast. 
+This produces a visually stable result when rendering HDR environment maps under varying exposure settings.
+</p>
+
+<p class="placeholder">
+Provide evidence that your tone mapping and exposure controls work.
+</p>
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Tone.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p class="placeholder">
+Plot your tone-mapping curve:
+</p>
+
+
+
+<figure>
+<canvas id="A2-tone-curve" style="display:block;width:600px;max-width:600px;margin:0 auto;background:#fff;height:300px;"></canvas>
+<figcaption>
+Tone-mapping curves (E = 0 stops): linear (with final clamp) vs. Reinhard.
+</figcaption>
+
+<script>
+window.addEventListener('load', () => {
+	// intensity domain (input radiance magnitude)
+	const intensity = [];
+	for (let i = 0; i <= 40; ++i) intensity.push(i * 0.25); // 0..10
+
+	// match shader behavior: exposure applied BEFORE tone mapping
+	const exposureStops = 0.0; // E
+	const exposureScale = Math.pow(2.0, exposureStops);
+
+	function linearTM(x) {
+		// "linear passes through the exposure-corrected values"
+		// shader clamps before output, so include clamp here for the plotted curve:
+		const y = x * exposureScale;
+		return Math.min(Math.max(y, 0.0), 1.0);
+	}
+
+	function reinhardTM(x) {
+		const y = x * exposureScale;
+		const mapped = y / (1.0 + y);
+		return Math.min(Math.max(mapped, 0.0), 1.0);
+	}
+
+	const outLinear = intensity.map(linearTM);
+	const outReinhard = intensity.map(reinhardTM);
+
+	new Chart("A2-tone-curve", {
+		type: "line",
+		data: {
+			labels: intensity,
+			datasets: [
+				{ label: "linear (clamped)", data: outLinear },
+				{ label: "reinhard", data: outReinhard },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "Tone Mapping Curves (E = 0 stops)" },
+				legend: { display: true, onClick:()=>{} },
+			},
+			scales: {
+				y: { min: 0, max: 1, title: { display: true, text: "output intensity" } },
+				x: { title: { display: true, text: "input intensity" } },
+			},
+			animation: false,
+		}
+	});
+});
+</script>
+</figure>
+
+
+<h3>Lambertian Diffuse <span class="atag">A2-diffuse</span></h3>
+
+<p class="placeholder">
+Where and how does your code implement the <code>"lambertian"</code> material?
+</p>
+
+<p>
+The <code>"lambertian"</code> material is implemented jointly in the <code>MaterialSystem</code> on the CPU side and in the
+<code>objects.frag</code> shader on the GPU side. During scene loading, <code>MaterialSystem</code> parses materials from the S72 file,
+assigns them a material type flag (<code>TYPE == 0</code> for lambertian), uploads their albedo parameters and textures,
+and binds the precomputed diffuse environment cubemap (<code>ENV_LAMBERTIAN</code>) that was generated offline by the cube utility.
+</p>
+
+<p>
+In the fragment shader (<code>objects.frag</code>), the lambertian branch evaluates the material by sampling this irradiance cubemap
+using the surface normal as the lookup direction and multiplying it by the material's albedo:
+</p>
+
+<code>
+vec3 e = texture(ENV_LAMBERTIAN, n).rgb;
+</code>
+
+<p>
+This corresponds to the rendering equation for a purely diffuse surface where the BRDF is constant and the lighting integral
+has been precomputed into the environment map. The resulting radiance is then passed through the shared exposure and tone-mapping
+step before being written to the framebuffer. By moving the cosine convolution offline, the runtime implementation of the
+lambertian material reduces to a single cubemap lookup and multiply, making it both physically correct and efficient.
+</p>
+
+<p class="placeholder">
+Provide evidence that your Lambertain cube-map pre-filtering works.
+Provide evidence that your <code>"lambertian"</code> material works.
+</p>
+
+<br>
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Check-In Cube Utility.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Check-In.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+<p class="placeholder">
+Plot timings for your Lambertian cube map pre-filtering as applied to various cube sizes.
+</p>
+
+<h3>Normal Mapping <span class="atag">A2-normal</span></h3>
+
+<p class="placeholder">
+Where and how does your code implement the normal mapping? (Both the texture loading and the usage in materials.)
+</p>
+
+<p class="placeholder">
+Provide evidence that your normal mapping works properly.
+</p>
+<p>
+Normal mapping in my code has two parts: texture loading/binding on the CPU side, 
+and tangent-space normal evaluation in the shaders.
+<br><br>
+On the CPU side, <code>MaterialSystem::build_material_texture</code> loads each material's normal map 
+into the global <code>textures</code> list and binds it in the per-material descriptor set at 
+<code>binding=4</code> (seen in <code>objects.frag</code> as <code>NORMAL_TEXTURE</code>). 
+To make the pipeline robust, if a material has no normal map I bind a default flat normal texture 
+created in <code>MaterialSystem.cpp</code> via <code>push_solid_texture</code> with RGBA=(128,128,255,255), 
+i.e., (0.5, 0.5, 1.0) in tangent space; all these 2D textures are stored on-GPU as 
+<code>VK_FORMAT_R8G8B8A8_UNORM</code>.
+<br><br>
+On the GPU side, the vertex shader (<code>objects.vert</code>) transforms the mesh normal using 
+<code>WORLD_FROM_LOCAL_NORMAL</code> and transforms the tangent using <code>WORLD_FROM_LOCAL</code>, 
+then passes <code>normal</code> and <code>tangent</code> to the fragment shader. 
+In <code>objects.frag</code>, I construct a TBN frame from the interpolated normal and tangent 
+(including orthonormalization and the handedness stored in <code>tangent.w</code>), sample the normal map 
+in tangent space, remap it from <code>[0,1]</code> to <code>[-1,1]</code>, and transform it to world space 
+with <code>TBN</code>. The resulting world-space normal <code>n</code> is then used for lighting and IBL lookups 
+in all relevant material branches.
+</p>
+
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Normal.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p class="placeholder">
+What, if any, is the performance impact of normal mapping in your viewer?
+Can you make normal mapping a bottleneck? (I'm not actually sure if you can! Asking this one out of curiosity to see what you try.) If so, please include the scene.
+</p>
+
+<h3>Physically-Based Material <span class="atag">A2-pbr</span></h3>
+
+<p class="placeholder">
+Where and how does your code implement the <code>"pbr"</code> material?
+How did you implement the integration required to pre-filter cube maps?
+Where does your code precompute and load the "environment BRDF" (the second part of the split sum), and how is it stored?
+</p>
+
+<p>
+The <code>"pbr"</code> material is implemented in the shared object shader and the material loading/binding code.
+On the CPU side, <code>MaterialSystem</code> parses the S72 material parameters/textures and assigns the PBR material type
+(<code>TYPE == 3u</code>) while ensuring that the PBR textures (albedo / roughness / metallic / normal) are bound in the
+material descriptor set (<code>set=2</code>).
+On the GPU side, the actual PBR shading happens in <code>objects.frag</code> under the <code>TYPE == 3u</code> branch:
+it samples roughness/metallic (modulated by the scalar factors stored in <code>PBR</code>), computes Fresnel and
+energy conservation (<code>kD/kS</code>), then evaluates split-sum IBL using a diffuse irradiance cubemap
+(<code>ENV_LAMBERTIAN</code>), a GGX prefiltered specular cubemap (<code>ENV</code> with mip selection), and a BRDF LUT
+(<code>BRDF_LUT</code>). The final radiance is then passed through the shared exposure + tone mapping path.
+</p>
+
+<p>
+The GGX cube-map prefiltering (the first part of the split sum) is implemented offline in the cube utility
+using the function <code>precompute_ibl_specular_ggx_mip</code>.
+Instead of performing importance sampling at runtime, this function generates a prefiltered environment
+represented as a mip-chain, where each mip level corresponds to a fixed surface roughness.
+Higher mip levels store progressively blurrier versions of the environment, approximating the widening GGX lobe.
+</p>
+
+<p>
+At runtime, the shader does not integrate the BRDF directly; it simply selects the appropriate mip level based on
+material roughness using <code>textureLod(ENV, R, mip)</code>.
+This converts the expensive convolution into a constant-time texture lookup and follows the mip-based
+split-sum approximation described in Karis’ real-time PBR notes.
+</p>
+
+<p>
+The “environment BRDF” lookup texture (the second half of the split sum) is precomputed using the function
+<code>precompute_brdf_lut</code>, also inside the cube utility.
+This function numerically integrates the GGX microfacet BRDF over the hemisphere for combinations of
+<code>N·V</code> and roughness, producing a 2D lookup table that encodes the scale and bias terms used in the
+split-sum approximation.
+The LUT is stored as a 16-bit-per-channel raw binary file to preserve precision, and at runtime the viewer loads this file,
+uploads it to a 2D GPU texture, and samples it in the PBR shader as <code>BRDF_LUT</code> to reconstruct the specular IBL term.
+</p>
+
+<p class="placeholder">
+Provide evidence that your <code>"pbr"</code> material works properly.
+</p>
+<br>
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 PBR.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p class="placeholder">
+Provide evidence that your cube utility is able to correctly pre-filter cube maps with the cosine-weighted GGX normal distribution function.
+You may wish to, e.g., show that no energy is lost.
+</p>
+<br>
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 PBR GGX.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p class="placeholder">
+Provide evidence that your cube utility is able to correctly pre-integrate the environment BRDF part of the split sum.
+(E.g., an image of the precomputed table to compare to the one presented by Karis.)
+</p>
+<br>
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 PBR LUT.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p class="placeholder">
+Provide charts of timings characterizing the performance of your cube utility.
+</p>
+
+<h3>Displacement Mapping <span class="atag">A2x-displacement</span></h3>
+
+<p class="placeholder">
+How did you implement displacement mapping?
+</p>
+
+<p class="placeholder">
+What is the performance impact of using displacement mapping in a scene?
+Include charts or tables and an example scene where displacement mapping is a bottleneck.
+</p>
+
+<h2>Feedback</h2>
+<p class="placeholder">
+This is the end of the structured report. Feel free to add feedback about A1 to this section.
+</p>
+
+
+
+</body></html>

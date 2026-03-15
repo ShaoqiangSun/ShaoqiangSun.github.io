@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://graphics.cs.cmu.edu/courses/15-472-s26/A1/report-template.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>15-472-s24: A1 - Scene Graph</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+figure {
+	margin: 10px -2em;
+	padding: 10px 2em;
+	width:100%;
+	background:#e8e8e8;
+}
+
+figcaption {
+	font-size:14px;
+	font-style:italic;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#e17dcd;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#c6aff8;
+}
+.atag.creative {
+	background:linear-gradient(0.35turn, #fcacff, #f9ab93, #76a1e4, #20953d);
+}
+
+</style>
+<!-- Load Chart.js for creating charts (documentation https://www.chartjs.org/docs/latest/ ) -->
+<script src="./15-472-s24_ A1 - Scene Graph_files/chart.js"></script>
+</head>
+<body>
+<h1>A1: Scene Viewer
+<span class="subtitle">by <span class="placeholder">Dennis Sun (shaoqias)</span></span>
+</h1>
+
+<!-- of course, delete these class="placeholder" notes in your report: -->
+
+<p class="placeholder">
+Summarize, in about one paragraph, your approach to the scene graph assignment.
+How did you structure your code?
+What's cool about it? Are there parts you weren't able to complete?
+<br><br>
+My approach to the scene graph assignment is using the s72-loader to load the scene into the S72 class, 
+and translate the S72 class data into an intermediate data format that the Tutorial class pipeline (LinesPipeline, ObjectsPipeline) uses.
+Currently the intermediate data members and members functions to load and show the scene, are stored in the Tutorial class.
+<br><br>
+What I think is cool is that I built a pipeline that loads the .s72 format scenes and render them. 
+And I can get access to low-level graphics API Vulkan, which provides direct control for rendering comparing with OpenGL.
+<br><br>
+What I weren't able to complete is firstly the extra part of A1x-fast. 
+I also would like to rearrange my code structure, and define a new class which does the translation of S72 data to the intermediate data.
+In this way I could make the Tutorial class structured more clearly and make the overall code length shorter.
+</p>
+
+<h2>My Animation <span class="atag creative">A1-create</span></h2>
+
+<p class="placeholder">
+Describe your animation and include a screen recording showing it running in real-time:
+<br><br>
+My animation shows the behavior of an atom. The nucleus consists of protons and neutrons, which I used differnt materials to represent them.
+The electrons orbit the nucleus.
+</p>
+
+<video autoplay muted loop playsinline style="width: 100%; height: auto;">
+  <source src="A1-make.mp4" type="video/mp4">
+</video>
+
+<video>
+<!--
+  you can use the 'video' element to show your code running
+  Learn more at:
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+  Example: put the video file in a path near this .html
+  <source src="path/to/video" type="video/mp4" />
+-->
+</video>
+
+<p class="placeholder">
+Describe how you created your animation.
+<br><br>
+Since my code reads the .s72 file directly and renders the scene based on the data, for this animation I edited the .s72 file.
+For the nucleus I placed eight spheres with different transform. For the electron orbit, it consists of the tilt node and the spin node.
+The tilt node determines the orientation of the orbit, and the spin node determines the spinning of the electrons.
+One orbit has two electrons, which have opposite positions with each other. The two electron nodes are the child of the spin node.
+So when the spin node has rotation, the electrons orbit the nucleus accordingly.
+</p>
+
+<h2>Using the Scene Viewer</h2>
+
+<p class="placeholder">Provide a short overview of how to use your viewer.
+<br><br>
+The viewer is mostly controlled by the Command-line Arguments.
+<br>
+Open terminal in the "nakluV" folder, run "source ~/VulkanSDK/1.4.335.*/setup-env.sh" and "node Maekfile.js" to compile the source code (Linux/macOS).
+<br>Run "bin/main" to run the executable.
+</p>
+
+
+<h3>Command-line Arguments</h3>
+
+<p class="placeholder">
+Document the command-line arguments that can be used to control your viewer.
+Include both the command-line arguments required by the assignment statement and any additional arguments you decided to add.
+</p>
+
+<ul>
+<li class="placeholder"><code>--scene <var>scene.s72</var></code> -- required -- load scene from <code><var>scene.s72</var></code></li>
+<li class="placeholder"><code>--camera <var>name</var></code> -- optional -- view the scene through the camera <code><var>name</var></code></li>
+<li class="placeholder"><code>--physical-device <var>name</var></code> -- optional -- use the physical device whose VkPhysicalDeviceProperties::deviceName matches <code><var>name</var></code></li>
+<li class="placeholder"><code>--drawing-size <var>w</var> <var>h</var></code> -- optional -- set the initial size of the drawable part of the window in physical pixels of width <code><var>w</var></code> and height <code><var>h</var></code></li>
+<li class="placeholder"><code>--culling <var>mode</var></code> -- optional -- sets the culling mode to be <code><var>none|frustum|bvh</var></code></li>
+<li class="placeholder"><code>--headless </code> -- optional -- if specified, run in headless mode (no windowing system connection), and read frame times and events from standard input. In headless mode, the flag --drawing-size specifies the size of the offscreen canvas that is rendered into </li>
+<li class="placeholder"><code>--test <var>mode</var></code> -- optional -- runs the A1-test section, <code><var>mode</var></code> can be <code><var>cpu</var></code> or <code><var>gpu</var></code>
+Under cpu mode, the program will automatically loads the test scene for cpu "cpu-bottleneck.s72"
+Under gpu mode, the program will load the scene from <code>--scene <var>scene.s72</var></code> argument</li>
+<li class="placeholder"><code>--culled-count <var>number</var></code> -- optional -- combined with <code>--test <var>cpu</var></code> argument to set the number of culled objects (outside the camera frustum) in the scene</li>
+<li class="placeholder"><code>--csv-file-name <var>file_name</var></code> -- optional -- in A1-test section, the user chosen log file name</li>
+</ul>
+
+<h3>Controls</h3>
+
+<p class="placeholder">
+Document the keyboard and mouse controls used to control your viewer when run interactively.
+Note that the controls below are placeholders not requirements.
+</p>
+
+<ul>
+<li class="placeholder"><kbd>LMB+Drag</kbd> orbit the camera.</li>
+<li class="placeholder"><kbd>Shift+LMB+Drag</kbd> translate the camera.</li>
+<li class="placeholder"><kbd>Mouse Wheel</kbd> dolly the camera.</li>
+<li class="placeholder"><kbd>TAB</kbd> switch between free camera and scene camera.</li>
+<li class="placeholder"><kbd>[</kbd> <kbd>]</kbd>switch between scene cameras.</li>
+<li class="placeholder"><kbd>D</kbd> enter and exit debug camera mode.</li>
+<li class="placeholder"><kbd>C</kbd> cycle culling mode in none|frustum|bvh.</li>
+<li class="placeholder"><kbd>Space</kbd> pause/resume the animation.</li>
+<li class="placeholder"><kbd>R</kbd> restart the animation.</li>
+<li class="placeholder"><kbd>L</kbd> enable/disable animation loop.</li>
+
+</ul>
+
+
+<h2>Evidence</h2>
+
+<p class="placeholder">
+The purpose of this section is to get you to think critically about your code by providing evidence sufficient to demonstrate to course staff that it works.
+These thoughts may also help you improve the code as you work on it in A2 and beyond.
+</p>
+
+
+<h3>Scene Loading <span class="atag">A1-load</span></h3>
+
+<p class="placeholder">
+Describe, in a few sentences, how your loading code works.
+Reference function and structure names for us to examine.
+<br><br>
+<code>Tutorial::load_mesh_vertices</code> loads the mesh data file into <code>std::vector&lt; PosNorTanTexVertex &gt; vertices;</code> and the vertice data are transferred to <code>Helpers::AllocatedBuffer object_vertices</code><div class=""></div>
+<br><br>
+<code>Tutorial::build_material_texture</code> loads the material and texture info, creates the indices for them and stores the material data in <code>std::vector&lt; Helpers::AllocatedBuffer &gt; material_params</code>
+<br><br>
+<code>Tutorial::build_scene_objects</code> traverses the nodes from scene root, calculates the world transform for mesh, light, and camera recursively.
+For mesh it will create a new element for <code>std::vector&lt; ObjectInstance &gt; object_instances;</code>, for lights and cameras it will record the data.
+<br><br>
+<code>Tutorial::load_all_textures</code> loads the texture using the stb_image library, and addes the texture to <code>std::vector&lt; Helpers::AllocatedImage &gt; textures; </code>
+
+</p>
+
+<p class="placeholder">
+(If you have <span class="atag">A1-show</span> working, you don't need to provide further evidence here. If you do not, provide some sort of print-outs or other scene statistics to prove that your code can load s72 scenes.)
+</p>
+
+<h3>Scene Display <span class="atag">A1-show</span></h3>
+<p class="placeholder">
+Describe, in a few sentences, how your display code goes from your internal scene graph representation to triangles being drawn by the GPU.
+Provide function and structure names for us to examine.
+<br><br>
+When I load the mesh vertice data, the data is copied to the vertex buffer <code>Helpers::AllocatedBuffer object_vertices</code>. For each scene object that is a mesh, <code>ObjectVertices</code> in <code>ObjectInstance</code> will record the first index of vertex and vertex count.
+<br><br>
+For vertex attributes, in PosNorTanTexVertex.cpp there are the four vertex attribute bindings.
+<br><br>
+For material info, in Tutorial-ObjectsPipeline.cpp I created a new set layout which currently has the albedo vec3 param (binding 0) and the albedo texture sampler (binding 1).
+<br><br>
+The previous <code>VkDescriptorSetLayout set2_TEXTURE </code> was changed to <code>VkDescriptorSetLayout set2_Material </code>
+</p>
+
+<p class="placeholder">
+Provide evidence that your code can display s72 scenes.
+Good evidence: screen shots or movies showing that example scene files load correctly.
+Choose or generate example scene files sufficient to demonstrate all required features (note that the simplifying assumptions in the assignment mean you do not need to completely implement s72).
+</p>
+
+<video autoplay muted loop playsinline style="width: 100%; height: auto;">
+  <source src="A1.mp4" type="video/mp4">
+</video>
+<img src="A1 Texture.png" style="width: 100%; height: auto;">
+<img src="A1 Material.png" style="width: 100%; height: auto;">
+
+<p class="placeholder">
+Spend some time thinking about corner cases that the provided examples may not test.
+If you develop a test case for these, include the s72 and b72 files with your report as well.
+</p>
+
+<h3>Scene Display — Interaction <span class="atag">A1-show</span></h3>
+
+<p class="placeholder">
+Describe how your code handles camera handling and switching.
+<br><br>
+In <code>Tutorial::on_input</code> the code detects if TAB is press to switch the <code>camera_mode</code>,
+ and if the [ or ] buttons are pressed to switch scene cameras (cycling the index).
+<br> For camera movement, also in this function the code checks for different <code>evt.type</code> and orbit the camera, translate the camera, dolly the camera respectively.
+</p>
+
+<p class="placeholder">
+Provide evidence that these interactions work.
+Possible evidence: a screen recording showing debug, user, and scene camera switching and interactive movement of the debug and user cameras.
+</p>
+<video autoplay muted loop playsinline style="width: 100%; height: auto;">
+  <source src="A1.mp4" type="video/mp4">
+</video>
+
+<h3>Frustum culling <span class="atag">A1-cull</span></h3>
+
+<p class="placeholder">
+Describe, in a few sentences,
+where your culling test is implemented;
+how you computed bounding boxes and the camera frustum;
+and the approach you used in your box-frustum test (draw and include a picture if it makes your explanation easier).
+Include references to specific functions and structures in your code for us to examine further.
+<br><br>
+Each mesh instance stores the local space bounding box.
+In <code>Tutorial::render</code>, I check <code>if (culling_mode == CullingMode::Frustum) </code>. In this case, for each object instance, I get its mesh bounding box and compute the frustum intersection test in <code>aabb_intersects_frustum </code>. 
+For each plane in clip space, it is transformed to mesh's local space to test if the mesh's bounding box is outside of the plane.
+</p>
+<p class="placeholder">
+Include, as evidence, a screenshot or video showing that culling is working (e.g., by using a debug camera to show that meshes outside the user camera's view aren't being drawn).
+</p>
+<video autoplay muted loop playsinline style="width: 100%; height: auto;">
+  <source src="A1-cull.mp4" type="video/mp4">
+</video>
+
+<p class="placeholder">
+Also include evidence that your culling works on any particularly difficult cases you may have thought up (include .s72 / .b72 files as appropriate).
+</p>
+
+<p class="placeholder">
+Demonstrate a scene and camera angle where your culling code improves performance; and demonstrate one where it does not improve performance.
+Include screen shots and make a chart or graph of median frame times as evidence for the performance impact.
+<br><br>
+In sphereflake.s72, where the free camera is set to default position, enable culling will have nearly half of the meshes culled, and the frame time for gpu to draw is reduced by nearly half.
+<br>
+In sphereflake-fixedcamera.s72, where the scene camera is set to "Fixed-Camera", enable culling won't have any of the meshed culled, because the camera frustum includes all the meshes.
+<br>
+Both the two scenes used static sun and sky data, because the .s72 files do not contains Light objects.
+</p>
+<img src="A1-cull 2.png" style="width: 100%; height: auto;">
+<img src="A1-cull 3.png" style="width: 100%; height: auto;">
+<img src="A1-cull 4.png" style="width: 100%; height: auto;">
+<img src="A1-cull 5.png" style="width: 100%; height: auto;">
+
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-cull-ex" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+
+sphereflake.s72, Culling using a box-frustum test improves frame times.
+Display size was set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [0, 10, 20, 30, 40];
+	const noCullingTimes  = [72.008, 16.9645, 18.7952, 16.0369, 17.4615];
+	const boxFrustumTimes = [57.6859, 8.96058, 9.10008, 10.4629, 8.42271];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-cull-ex", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "no culling", data: noCullingTimes },
+				{ label: "box/frustum", data: boxFrustumTimes },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "Impact of Frustum Culling" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:25,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-cull-ex2" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+
+sphereflake-fixedcamera.s72, Culling using a box-frustum test does not improve frame times.
+Display size was set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [0, 10, 20, 30, 40];
+	const noCullingTimes  = [57.0134, 19.4925, 18.8573, 17.1252, 17.4153];
+	const boxFrustumTimes = [57.0162, 16.5852, 16.6012, 17.919, 17.7229];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-cull-ex2", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "no culling", data: noCullingTimes },
+				{ label: "box/frustum", data: boxFrustumTimes },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "Impact of Frustum Culling" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:25,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+
+<h3>Animating the scene <span class="atag">A1-move</span></h3>
+
+<p class="placeholder">
+Describe, in a few sentences:
+how your viewer stores keyframes;
+and where/how your code handles updated transformations due to animations.
+Include code and structure references.
+<br><br>
+My viewer stores keyframes directly in the parsed <code>S72::Driver</code> objects.
+<br><br>
+When drivers exist, the program calls <code>Tutorial::apply_drivers</code>, which first restores all nodes to their cached rest pose (<code>all_nodes, rest_T, rest_R, rest_S</code>), 
+then evaluates each driver at time t and writes the result into <code>d.node.translation/scale/rotation</code>.
+<br><br>
+After node TRS values are updated, <code>Tutorial::update_scene_objects()</code> traverses the scene graph to recompute each instance's world transform.
+</p>
+
+<p class="placeholder">
+Provide evidence that your viewer can play back s72 animation.
+Make sure to demonstrate that both camera and object animation work, and that animation of scene graph hierarchies work.
+</p>
+<video autoplay muted loop playsinline style="width: 100%; height: auto;">
+  <source src="A1-move.mp4" type="video/mp4">
+</video>
+
+
+<h3>Bottleneck Hunting <span class="atag">A1-test</span></h3>
+
+<p class="placeholder">
+Describe for your CPU- and GPU-bottlenecked scenes what your approach was to moving the critical part of the workload to the CPU or GPU, respectively.
+Include a screenshot of the scenes as well as s72 and b72 files as needed.
+<br><br>
+To create a CPU-bottlenecked scenario, I increased the number of objects that must be processed by the CPU during frustum culling by adding a large number of culled instances to the scene. 
+This shifts the dominant workload to the CPU, as it must evaluate many bounding volumes even though most are not rendered.
+<br><br>
+To create a GPU-bottlenecked scenario, I increased the rendering resolution significantly (from 4K to 8K to 16K), which raises the rasterization and fragment shading cost without changing scene complexity. 
+This moves the critical workload to the GPU, where the large number of pixels dominates frame time.
+<br><br> 
+The cpu-bottleneck scene uses cpu-bottleneck.s72 and sg-Articulation.Rounded-Cube.pnTt.b72.
+The gpu-bottleneck sceneuses sg-Articulation.s72 and related .b72 files.
+
+</p>
+
+<figure>
+  <img src="A1-test 1.png" style="width: 100%; height: auto;">
+  <figcaption style="text-align: center;">cpu-bottleneck.s72</figcaption>
+</figure>
+<figure>
+  <img src="A1-test 2.png" style="width: 100%; height: auto;">
+  <figcaption style="text-align: center;">cpu-bottleneck.s72</figcaption>
+</figure>
+
+
+<p class="placeholder">
+Describe how you generated the scenes.
+<br><br> For cpu-bottleneck.s72, I just keep only one cube mesh in the .s72 file and add meshes that are outside the frustum in my code.
+</p>
+<p class="placeholder">
+Describe how you tested the scenes -- including any relevant hardware information about the computer(s) you tested on.
+<br><br>
+Hardware: Apple M3 Max Chip
+<br>
+For the cpu-bottleneck scene, I adjusted the parameter of culled mesh to 1000, 10000, 100000, and 1000000.
+<br>
+For the gpu-bottleneck scene, I adjusted the parameter of resolution to 4K, 8K, and 16K.
+</p>
+<p class="placeholder">
+Provide evidence that in each scene the CPU- or GPU-part of the workload is, indeed, a bottleneck.
+Use charts and graphs as appropriate to make your argument.
+</p>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-ex" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [0.008167, 0.007667, 0.008792, 0.007959, 0.008834];
+	const gpuFrameTime = [0.107875, 0.0775, 0.062833, 0.074417, 0.077166];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-ex", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 1000" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max: 0.15,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-ex2" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [0.072417, 0.075667, 0.073709, 0.077833, 0.077833];
+	const gpuFrameTime = [0.094291, 0.095458, 0.127208, 0.086792, 0.08775];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-ex2", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 10000" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max: 0.15,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-ex3" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [0.581709, 0.785, 0.602208, 0.606666, 0.619375];
+	const gpuFrameTime = [0.096958, 0.043584, 0.086416, 0.091708, 0.096167];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-ex3", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 100000" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max: 1,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-ex4" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [6.00842, 6.04171, 6.09079, 5.94838, 6.32071];
+	const gpuFrameTime = [0.042291, 0.078833, 0.042916, 0.041791, 0.08675];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-ex4", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 1000000" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max: 7,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-gpu-ex" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 3840x2160.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 3, 5, 7, 9];
+	const cpuFrameTime  = [0.165875, 0.109791, 0.098583, 0.097083, 0.086875];
+	const gpuFrameTime = [0.281709, 0.280333, 0.278917, 0.2785, 0.291166];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-gpu-ex", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu work time", data: cpuFrameTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "gpu-bottleneck, resolution = 4K" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:1,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-gpu-ex2" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 7680x4320.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 3, 5, 7, 9];
+	const cpuFrameTime  = [0.212834, 0.1095, 0.088709, 0.226834, 0.091417];
+	const gpuFrameTime = [0.972125, 0.961208, 0.961459, 0.961583, 0.960916];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-gpu-ex2", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu work time", data: cpuFrameTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "gpu-bottleneck, resolution = 8K" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:1,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-gpu-ex3" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 15360x8640.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 3, 5, 7, 9];
+	const cpuFrameTime  = [0.288125, 0.146583, 0.116083, 0.114375, 0.097167];
+	const gpuFrameTime = [4.22179, 3.71442, 3.72033, 4.15517, 4.11862];
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-gpu-ex3", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu work time", data: cpuFrameTime },
+				{ label: "gpu render time", data: gpuFrameTime },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "gpu-bottleneck, resolution = 16K" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:4.5,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<h3>Performance improvements <span class="atag extra">A1x-fast</span></h3>
+<p class="placeholder">
+Write a subsection (&lt;h4&gt;) of this section for every attempted performance improvement.
+If you attempted no further performance improvements leave this section blank.
+</p>
+
+<p class="placeholder">
+In each subsection, include a description of what you tried (including references to your code) and evidence of where (and if) the optimization actually did improve performance.
+Report -- at a minimum -- frame times for the same scene collected in headless mode with the optimization on and off.
+Ideally, develop a scene for which the optimization does improve performance and another scene for which it does not.
+</p>
+
+<h4>BVH for Culling</h4>
+<p class="placeholder">
+I implemented a Bounding Volume Hierarchy (BVH) to speed up frustum culling by grouping static mesh instances into a tree of world-space bounding boxes. 
+The BVH built function <code>Tutorial::build_bvh_for_static()</code> is called in <code>Tutorial::build_scene_objects()</code>.
+In <code>Tutorial::render</code>, culling is performed by <code>Tutorial::cull_with_bvh</code>, which traverses the tree top-down.
+At the leaves, individual objects are tested using the existing <code>Tutorial::aabb_intersects_frustum</code> before being added to draw_list.
+For animated objects, they are traversed linearly by <code>Tutorial::aabb_intersects_frustum</code> for frustum test.
+</p>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-bvhoff-ex4" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [6.00842, 6.04171, 6.09079, 5.94838, 6.32071];
+	
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-bvhoff-ex4", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 1000000" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:7,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<figure>
+<!-- Feel free to use and duplicate the below example graph to plot data
+ 	 Edit labels and variables in script below the canvas -->
+<canvas id="A1-test-cpu-bvhon-ex4" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+Frame times collected using headless mode on the computer described above with display size set to 800x540.
+</figcaption>
+<script>
+//adding an event listener so that this chart gets made *after* the document loads:
+window.addEventListener('load', () => {
+	//in a real workload these arrays would be a lot longer:
+	const frameNumbers    = [1, 4, 9, 14, 19];
+	const cpuCullTime  = [0.006833, 0.006917, 0.006209, 0.010541, 0.006166];
+	
+	// Chart.js supports many types of charts and configuration options.
+	//   See: https://www.chartjs.org/docs/latest/
+	// NOTE: make sure to keep things labelled clearly.
+	// NOTE2: if you want to compare numbers use bar charts, not pie charts (people are bad at comparing angles and good at comparing lengths).
+	// NOTE3: scatter and line charts will probably be the most interesting the sorts of data you are visualizing.
+	//     Histograms also useful but you will need to pre-process your data into bins and use the bar chart type.
+	new Chart("A1-test-cpu-bvhon-ex4", {
+		type: "line",
+		data: {
+			labels: frameNumbers,
+			datasets: [
+				{ label: "cpu cull time", data: cpuCullTime },
+				
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "cpu-bottleneck, visible-mesh = 1, culled-mesh = 1000000, BVH enabled" }, //show a chart title
+				legend: { display: true, onClick:()=>{} }, //show legend but don't allow interacting
+			},
+			scales: {
+				y:{
+					min:0, //having y-axis start at zero provides better relative view of data
+					max:0.02,
+					title: { display:true, text:"frame time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"frame number" },
+				},
+			},
+			animation:false, //don't animate in the data sets
+		}
+	});
+});
+</script>
+</figure>
+
+<h2>Feedback</h2>
+<p class="placeholder">
+This is the end of the structured report. Feel free to add feedback about A1 to this section.
+</p>
+
+</body></html>
