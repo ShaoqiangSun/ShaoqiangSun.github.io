@@ -9,18 +9,63 @@
     body {
       margin: 0;
       padding: 0;
+      padding-top: 60px;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background-image: url('../photography/pittsburgh/DSC_6046.JPG'); /* 替换为你的背景 */
+      background-image: url('../photography/pittsburgh/DSC_6046.JPG');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
       color: #FFF;
       display: flex;
-      justify-content: center; /* 水平居中 */
-      align-items: center; /* 垂直居中 */
-      height: 100vh; /* 让内容填充整个视口 */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       text-align: center;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    .nav-links a.active {
+      color: #111;
+      font-weight: 600;
+      border-bottom: 2px solid #333;
+      padding-bottom: 2px;
     }
 
     
@@ -59,6 +104,17 @@
   </style>
 </head>
 <body>
+
+  <div class="navbar">
+    <a class="logo" href="../index.html">Dennis' Website</a>
+    <div class="nav-links">
+      <a href="../introduction/index.html">About Me</a>
+      <a href="../demo reel/index.html">Demo Reel</a>
+      <a href="../projects/index.html">Projects</a>
+      <a href="../photography/photography.html">Photography Gallery</a>
+      <a href="../contact/index.html" class="active">Contact</a>
+    </div>
+  </div>
 
   <div class="contact-card">
     <div class="contact-title">Contact Me</div>

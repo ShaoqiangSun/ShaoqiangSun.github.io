@@ -78,14 +78,63 @@
       color: #555;
     }
 
-    /* 如果想要在背景中添加一些艺术纹理或图案，可以在此添加自定义样式 */
-    /* body {
-      background: url("你的艺术背景图.jpg") no-repeat center center fixed;
-      background-size: cover;
-    } */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    .nav-links a.active {
+      color: #111;
+      font-weight: 600;
+      border-bottom: 2px solid #333;
+      padding-bottom: 2px;
+    }
   </style>
 </head>
-<body>
+<body style="padding-top: 60px;">
+
+  <div class="navbar">
+    <a class="logo" href="../index.html">Dennis' Website</a>
+    <div class="nav-links">
+      <a href="../introduction/index.html" class="active">About Me</a>
+      <a href="../demo reel/index.html">Demo Reel</a>
+      <a href="../projects/index.html">Projects</a>
+      <a href="../photography/photography.html">Photography Gallery</a>
+      <a href="../contact/index.html">Contact</a>
+    </div>
+  </div>
 
   <div class="about-wrapper">
     <!-- 个人照片 -->
