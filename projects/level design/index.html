@@ -1,57 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level Design Project</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level Design — Dennis Sun</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-            background-color: #111111;
-            color: #fff;
-        }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+    }
 
-        
-        .video-container {
-            display: flex;
-            flex-direction: column; 
-            align-items: center; 
-            gap: 20px; 
-        }
-        .video-container video {
-            width: 50%; 
-            
-        }
-        .video-title {
-            text-align: center;
-        }
+    /* ── Top navbar ── */
+    .navbar {
+      height: 60px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .game-introduction {
-            text-align: center;
-            max-width: 60%;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    .logo {
+      font-size: 1.5em;
+      color: #333;
+      text-decoration: none;
+    }
 
-        
-        .horizontal {
-            width: 900px;
-        }
-        
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+    }
 
-    </style>
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    .nav-links a.active {
+      color: #111;
+      font-weight: 600;
+      border-bottom: 2px solid #333;
+      padding-bottom: 2px;
+    }
+
+    /* ── Video sub-nav ── */
+    .subnav {
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+      background-color: #161616;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .subnav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .subnav a {
+      text-decoration: none;
+      color: #888;
+      font-size: 0.85em;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .subnav a:hover {
+      color: #fff;
+    }
+
+    .subnav a.active {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+
+    /* ── Page content ── */
+    .content {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    /* ── Individual video section ── */
+    .video-section {
+      scroll-margin-top: 120px; /* offset for sticky navbar + subnav */
+    }
+
+    .video-section h2 {
+      font-size: 1.4em;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #f0f0f0;
+      margin-bottom: 20px;
+    }
+
+    .video-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Level Design Project</h1>
-   
-    <img src="portal.svg" width="1440"/>
+
+  <div class="navbar">
+    <a class="logo" href="../../index.html">Dennis' Website</a>
+    <div class="nav-links">
+      <a href="../../introduction/index.html">About Me</a>
+      <a href="../../demo reel/index.html">Demo Reel</a>
+      <a href="../../projects/index.html" class="active">Projects</a>
+      <a href="../../photography/photography.html">Photography Gallery</a>
+      <a href="../../contact/index.html">Contact</a>
+    </div>
+  </div>
+
+  <nav class="subnav" id="subnav">
+    <a href="#portal">Portal</a>
+    <a href="#leyline">LeyLine</a>
+    <a href="#crystal">Crystal</a>
+    <a href="#disintegration">Disintegration</a>
+    <a href="#dark-perspective">Dark Perspective</a>
+  </nav>
+
+  <div class="content">
+
+    <section class="video-section" id="portal">
+      <h2>Portal</h2>
+      <div class="video-wrapper">
+        <video controls preload="none">
+          <source src="Portal.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="video-section" id="leyline">
+      <h2>LeyLine</h2>
+      <div class="video-wrapper">
+        <video controls preload="none">
+          <source src="LeyLine.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="video-section" id="crystal">
+      <h2>Crystal</h2>
+      <div class="video-wrapper">
+        <video controls preload="none">
+          <source src="Crystal.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="video-section" id="disintegration">
+      <h2>Disintegration</h2>
+      <div class="video-wrapper">
+        <video controls preload="none">
+          <source src="Disintegration.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="video-section" id="dark-perspective">
+      <h2>Dark Perspective</h2>
+      <div class="video-wrapper">
+        <video controls preload="none">
+          <source src="Dark Perspective.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const sections = document.querySelectorAll('.video-section');
+    const subnavLinks = document.querySelectorAll('.subnav a');
+
+    // Highlight subnav link whose section is most visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            subnavLinks.forEach((a) => {
+              a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      },
+      {
+        rootMargin: '-120px 0px -60% 0px', // trigger when section crosses upper third
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+
+    // On page load with a hash: scroll to the right section smoothly
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  </script>
 
 </body>
-
 </html>
