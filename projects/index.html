@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             background: #000000;
         }
 
@@ -18,6 +18,14 @@
             padding: 50px;
             /* background: #333; */
             color: #fff;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #f0f0f0;
         }
 
         .gallery {
@@ -57,7 +65,23 @@
             background: rgba(0, 0, 0, 0.7);
             text-align: center;
             padding: 10px;
-            font-size: 18px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f0f0f0;
+        }
+
+        .gallery-item video {
+            width: 480px;
+            height: 270px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         /* Responsive adjustments */
@@ -138,6 +162,24 @@
     </div>
 
     <div class="gallery">
+        <div class="gallery-item">
+            <a href="real time graphics/index.html">
+                <video muted loop autoplay preload="metadata">
+                    <source src="real time graphics/A2/report/A2 PBR.mp4" type="video/mp4" />
+                </video>
+                <div class="caption">Real Time Graphics</div>
+            </a>
+        </div>
+
+        <div class="gallery-item">
+            <a href="level design/index.html">
+                <video muted loop autoplay preload="metadata">
+                    <source src="level design/Portal.mp4" type="video/mp4" />
+                </video>
+                <div class="caption">Level Design</div>
+            </a>
+        </div>
+
         <div class="gallery-item">
             <a href="../projects/270 degree fun/index.html">
                 <img src="../projects/270 degree fun/feature image.png">
@@ -258,7 +300,6 @@
             </a>
         </div>
 
-        
 
     </div>
 

@@ -1,0 +1,4520 @@
+[
+"s72-v2",
+{
+	"type": "MATERIAL",
+	"name": "lambertian:checker",
+	"lambertian": {
+		"albedo": {
+			"src": "checker.png",
+			"format": "srgb"
+		}
+	}
+},
+{
+	"type": "MESH",
+	"name": "Floor",
+	"topology": "TRIANGLE_LIST",
+	"count": 6,
+	"attributes": {
+		"POSITION": {
+			"src": "perf-test-floor.b72",
+			"offset": 0,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"NORMAL": {
+			"src": "perf-test-floor.b72",
+			"offset": 12,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"TANGENT": {
+			"src": "perf-test-floor.b72",
+			"offset": 24,
+			"stride": 48,
+			"format": "R32G32B32A32_SFLOAT"
+		},
+		"TEXCOORD": {
+			"src": "perf-test-floor.b72",
+			"offset": 40,
+			"stride": 48,
+			"format": "R32G32_SFLOAT"
+		}
+	},
+	"material": "lambertian:checker"
+},
+{
+	"type": "NODE",
+	"name": "Floor",
+	"translation": [
+		0.0,
+		0.0,
+		0.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"mesh": "Floor"
+},
+{
+	"type": "LIGHT",
+	"name": "SphereLight",
+	"tint": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"sphere": {
+		"radius": 0.0,
+		"power": 200.0,
+		"limit": 20.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Light0",
+	"translation": [
+		-32.66666666666667,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light1",
+	"translation": [
+		-28.0,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light2",
+	"translation": [
+		-23.333333333333336,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light3",
+	"translation": [
+		-18.666666666666668,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light4",
+	"translation": [
+		-14.0,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light5",
+	"translation": [
+		-9.333333333333334,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light6",
+	"translation": [
+		-4.666666666666667,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light7",
+	"translation": [
+		0.0,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light8",
+	"translation": [
+		4.666666666666667,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light9",
+	"translation": [
+		9.333333333333334,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light10",
+	"translation": [
+		14.0,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light11",
+	"translation": [
+		18.666666666666668,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light12",
+	"translation": [
+		23.333333333333336,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light13",
+	"translation": [
+		28.0,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light14",
+	"translation": [
+		32.66666666666667,
+		-30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light15",
+	"translation": [
+		-32.66666666666667,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light16",
+	"translation": [
+		-28.0,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light17",
+	"translation": [
+		-23.333333333333336,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light18",
+	"translation": [
+		-18.666666666666668,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light19",
+	"translation": [
+		-14.0,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light20",
+	"translation": [
+		-9.333333333333334,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light21",
+	"translation": [
+		-4.666666666666667,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light22",
+	"translation": [
+		0.0,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light23",
+	"translation": [
+		4.666666666666667,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light24",
+	"translation": [
+		9.333333333333334,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light25",
+	"translation": [
+		14.0,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light26",
+	"translation": [
+		18.666666666666668,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light27",
+	"translation": [
+		23.333333333333336,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light28",
+	"translation": [
+		28.0,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light29",
+	"translation": [
+		32.66666666666667,
+		-25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light30",
+	"translation": [
+		-32.66666666666667,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light31",
+	"translation": [
+		-28.0,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light32",
+	"translation": [
+		-23.333333333333336,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light33",
+	"translation": [
+		-18.666666666666668,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light34",
+	"translation": [
+		-14.0,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light35",
+	"translation": [
+		-9.333333333333334,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light36",
+	"translation": [
+		-4.666666666666667,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light37",
+	"translation": [
+		0.0,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light38",
+	"translation": [
+		4.666666666666667,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light39",
+	"translation": [
+		9.333333333333334,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light40",
+	"translation": [
+		14.0,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light41",
+	"translation": [
+		18.666666666666668,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light42",
+	"translation": [
+		23.333333333333336,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light43",
+	"translation": [
+		28.0,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light44",
+	"translation": [
+		32.66666666666667,
+		-21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light45",
+	"translation": [
+		-32.66666666666667,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light46",
+	"translation": [
+		-28.0,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light47",
+	"translation": [
+		-23.333333333333336,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light48",
+	"translation": [
+		-18.666666666666668,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light49",
+	"translation": [
+		-14.0,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light50",
+	"translation": [
+		-9.333333333333334,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light51",
+	"translation": [
+		-4.666666666666667,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light52",
+	"translation": [
+		0.0,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light53",
+	"translation": [
+		4.666666666666667,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light54",
+	"translation": [
+		9.333333333333334,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light55",
+	"translation": [
+		14.0,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light56",
+	"translation": [
+		18.666666666666668,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light57",
+	"translation": [
+		23.333333333333336,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light58",
+	"translation": [
+		28.0,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light59",
+	"translation": [
+		32.66666666666667,
+		-16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light60",
+	"translation": [
+		-32.66666666666667,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light61",
+	"translation": [
+		-28.0,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light62",
+	"translation": [
+		-23.333333333333336,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light63",
+	"translation": [
+		-18.666666666666668,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light64",
+	"translation": [
+		-14.0,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light65",
+	"translation": [
+		-9.333333333333334,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light66",
+	"translation": [
+		-4.666666666666667,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light67",
+	"translation": [
+		0.0,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light68",
+	"translation": [
+		4.666666666666667,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light69",
+	"translation": [
+		9.333333333333334,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light70",
+	"translation": [
+		14.0,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light71",
+	"translation": [
+		18.666666666666668,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light72",
+	"translation": [
+		23.333333333333336,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light73",
+	"translation": [
+		28.0,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light74",
+	"translation": [
+		32.66666666666667,
+		-11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light75",
+	"translation": [
+		-32.66666666666667,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light76",
+	"translation": [
+		-28.0,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light77",
+	"translation": [
+		-23.333333333333336,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light78",
+	"translation": [
+		-18.666666666666668,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light79",
+	"translation": [
+		-14.0,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light80",
+	"translation": [
+		-9.333333333333334,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light81",
+	"translation": [
+		-4.666666666666667,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light82",
+	"translation": [
+		0.0,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light83",
+	"translation": [
+		4.666666666666667,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light84",
+	"translation": [
+		9.333333333333334,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light85",
+	"translation": [
+		14.0,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light86",
+	"translation": [
+		18.666666666666668,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light87",
+	"translation": [
+		23.333333333333336,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light88",
+	"translation": [
+		28.0,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light89",
+	"translation": [
+		32.66666666666667,
+		-7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light90",
+	"translation": [
+		-32.66666666666667,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light91",
+	"translation": [
+		-28.0,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light92",
+	"translation": [
+		-23.333333333333336,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light93",
+	"translation": [
+		-18.666666666666668,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light94",
+	"translation": [
+		-14.0,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light95",
+	"translation": [
+		-9.333333333333334,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light96",
+	"translation": [
+		-4.666666666666667,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light97",
+	"translation": [
+		0.0,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light98",
+	"translation": [
+		4.666666666666667,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light99",
+	"translation": [
+		9.333333333333334,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light100",
+	"translation": [
+		14.0,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light101",
+	"translation": [
+		18.666666666666668,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light102",
+	"translation": [
+		23.333333333333336,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light103",
+	"translation": [
+		28.0,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light104",
+	"translation": [
+		32.66666666666667,
+		-2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light105",
+	"translation": [
+		-32.66666666666667,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light106",
+	"translation": [
+		-28.0,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light107",
+	"translation": [
+		-23.333333333333336,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light108",
+	"translation": [
+		-18.666666666666668,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light109",
+	"translation": [
+		-14.0,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light110",
+	"translation": [
+		-9.333333333333334,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light111",
+	"translation": [
+		-4.666666666666667,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light112",
+	"translation": [
+		0.0,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light113",
+	"translation": [
+		4.666666666666667,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light114",
+	"translation": [
+		9.333333333333334,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light115",
+	"translation": [
+		14.0,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light116",
+	"translation": [
+		18.666666666666668,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light117",
+	"translation": [
+		23.333333333333336,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light118",
+	"translation": [
+		28.0,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light119",
+	"translation": [
+		32.66666666666667,
+		2.3333333333333335,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light120",
+	"translation": [
+		-32.66666666666667,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light121",
+	"translation": [
+		-28.0,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light122",
+	"translation": [
+		-23.333333333333336,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light123",
+	"translation": [
+		-18.666666666666668,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light124",
+	"translation": [
+		-14.0,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light125",
+	"translation": [
+		-9.333333333333334,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light126",
+	"translation": [
+		-4.666666666666667,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light127",
+	"translation": [
+		0.0,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light128",
+	"translation": [
+		4.666666666666667,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light129",
+	"translation": [
+		9.333333333333334,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light130",
+	"translation": [
+		14.0,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light131",
+	"translation": [
+		18.666666666666668,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light132",
+	"translation": [
+		23.333333333333336,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light133",
+	"translation": [
+		28.0,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light134",
+	"translation": [
+		32.66666666666667,
+		7.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light135",
+	"translation": [
+		-32.66666666666667,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light136",
+	"translation": [
+		-28.0,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light137",
+	"translation": [
+		-23.333333333333336,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light138",
+	"translation": [
+		-18.666666666666668,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light139",
+	"translation": [
+		-14.0,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light140",
+	"translation": [
+		-9.333333333333334,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light141",
+	"translation": [
+		-4.666666666666667,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light142",
+	"translation": [
+		0.0,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light143",
+	"translation": [
+		4.666666666666667,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light144",
+	"translation": [
+		9.333333333333334,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light145",
+	"translation": [
+		14.0,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light146",
+	"translation": [
+		18.666666666666668,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light147",
+	"translation": [
+		23.333333333333336,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light148",
+	"translation": [
+		28.0,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light149",
+	"translation": [
+		32.66666666666667,
+		11.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light150",
+	"translation": [
+		-32.66666666666667,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light151",
+	"translation": [
+		-28.0,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light152",
+	"translation": [
+		-23.333333333333336,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light153",
+	"translation": [
+		-18.666666666666668,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light154",
+	"translation": [
+		-14.0,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light155",
+	"translation": [
+		-9.333333333333334,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light156",
+	"translation": [
+		-4.666666666666667,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light157",
+	"translation": [
+		0.0,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light158",
+	"translation": [
+		4.666666666666667,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light159",
+	"translation": [
+		9.333333333333334,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light160",
+	"translation": [
+		14.0,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light161",
+	"translation": [
+		18.666666666666668,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light162",
+	"translation": [
+		23.333333333333336,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light163",
+	"translation": [
+		28.0,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light164",
+	"translation": [
+		32.66666666666667,
+		16.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light165",
+	"translation": [
+		-32.66666666666667,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light166",
+	"translation": [
+		-28.0,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light167",
+	"translation": [
+		-23.333333333333336,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light168",
+	"translation": [
+		-18.666666666666668,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light169",
+	"translation": [
+		-14.0,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light170",
+	"translation": [
+		-9.333333333333334,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light171",
+	"translation": [
+		-4.666666666666667,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light172",
+	"translation": [
+		0.0,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light173",
+	"translation": [
+		4.666666666666667,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light174",
+	"translation": [
+		9.333333333333334,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light175",
+	"translation": [
+		14.0,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light176",
+	"translation": [
+		18.666666666666668,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light177",
+	"translation": [
+		23.333333333333336,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light178",
+	"translation": [
+		28.0,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light179",
+	"translation": [
+		32.66666666666667,
+		21.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light180",
+	"translation": [
+		-32.66666666666667,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light181",
+	"translation": [
+		-28.0,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light182",
+	"translation": [
+		-23.333333333333336,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light183",
+	"translation": [
+		-18.666666666666668,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light184",
+	"translation": [
+		-14.0,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light185",
+	"translation": [
+		-9.333333333333334,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light186",
+	"translation": [
+		-4.666666666666667,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light187",
+	"translation": [
+		0.0,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light188",
+	"translation": [
+		4.666666666666667,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light189",
+	"translation": [
+		9.333333333333334,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light190",
+	"translation": [
+		14.0,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light191",
+	"translation": [
+		18.666666666666668,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light192",
+	"translation": [
+		23.333333333333336,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light193",
+	"translation": [
+		28.0,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light194",
+	"translation": [
+		32.66666666666667,
+		25.666666666666668,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light195",
+	"translation": [
+		-32.66666666666667,
+		30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light196",
+	"translation": [
+		-28.0,
+		30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light197",
+	"translation": [
+		-23.333333333333336,
+		30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light198",
+	"translation": [
+		-18.666666666666668,
+		30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light199",
+	"translation": [
+		-14.0,
+		30.333333333333336,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "CAMERA",
+	"name": "PerfCam",
+	"perspective": {
+		"aspect": 1.0,
+		"vfov": 1.0472,
+		"near": 1.0,
+		"far": 1000.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Camera",
+	"translation": [
+		0.0,
+		0.0,
+		50.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"camera": "PerfCam"
+},
+{
+	"type": "SCENE",
+	"name": "perf-lights-200",
+	"roots": [
+		"Floor",
+		"Light0",
+		"Light1",
+		"Light2",
+		"Light3",
+		"Light4",
+		"Light5",
+		"Light6",
+		"Light7",
+		"Light8",
+		"Light9",
+		"Light10",
+		"Light11",
+		"Light12",
+		"Light13",
+		"Light14",
+		"Light15",
+		"Light16",
+		"Light17",
+		"Light18",
+		"Light19",
+		"Light20",
+		"Light21",
+		"Light22",
+		"Light23",
+		"Light24",
+		"Light25",
+		"Light26",
+		"Light27",
+		"Light28",
+		"Light29",
+		"Light30",
+		"Light31",
+		"Light32",
+		"Light33",
+		"Light34",
+		"Light35",
+		"Light36",
+		"Light37",
+		"Light38",
+		"Light39",
+		"Light40",
+		"Light41",
+		"Light42",
+		"Light43",
+		"Light44",
+		"Light45",
+		"Light46",
+		"Light47",
+		"Light48",
+		"Light49",
+		"Light50",
+		"Light51",
+		"Light52",
+		"Light53",
+		"Light54",
+		"Light55",
+		"Light56",
+		"Light57",
+		"Light58",
+		"Light59",
+		"Light60",
+		"Light61",
+		"Light62",
+		"Light63",
+		"Light64",
+		"Light65",
+		"Light66",
+		"Light67",
+		"Light68",
+		"Light69",
+		"Light70",
+		"Light71",
+		"Light72",
+		"Light73",
+		"Light74",
+		"Light75",
+		"Light76",
+		"Light77",
+		"Light78",
+		"Light79",
+		"Light80",
+		"Light81",
+		"Light82",
+		"Light83",
+		"Light84",
+		"Light85",
+		"Light86",
+		"Light87",
+		"Light88",
+		"Light89",
+		"Light90",
+		"Light91",
+		"Light92",
+		"Light93",
+		"Light94",
+		"Light95",
+		"Light96",
+		"Light97",
+		"Light98",
+		"Light99",
+		"Light100",
+		"Light101",
+		"Light102",
+		"Light103",
+		"Light104",
+		"Light105",
+		"Light106",
+		"Light107",
+		"Light108",
+		"Light109",
+		"Light110",
+		"Light111",
+		"Light112",
+		"Light113",
+		"Light114",
+		"Light115",
+		"Light116",
+		"Light117",
+		"Light118",
+		"Light119",
+		"Light120",
+		"Light121",
+		"Light122",
+		"Light123",
+		"Light124",
+		"Light125",
+		"Light126",
+		"Light127",
+		"Light128",
+		"Light129",
+		"Light130",
+		"Light131",
+		"Light132",
+		"Light133",
+		"Light134",
+		"Light135",
+		"Light136",
+		"Light137",
+		"Light138",
+		"Light139",
+		"Light140",
+		"Light141",
+		"Light142",
+		"Light143",
+		"Light144",
+		"Light145",
+		"Light146",
+		"Light147",
+		"Light148",
+		"Light149",
+		"Light150",
+		"Light151",
+		"Light152",
+		"Light153",
+		"Light154",
+		"Light155",
+		"Light156",
+		"Light157",
+		"Light158",
+		"Light159",
+		"Light160",
+		"Light161",
+		"Light162",
+		"Light163",
+		"Light164",
+		"Light165",
+		"Light166",
+		"Light167",
+		"Light168",
+		"Light169",
+		"Light170",
+		"Light171",
+		"Light172",
+		"Light173",
+		"Light174",
+		"Light175",
+		"Light176",
+		"Light177",
+		"Light178",
+		"Light179",
+		"Light180",
+		"Light181",
+		"Light182",
+		"Light183",
+		"Light184",
+		"Light185",
+		"Light186",
+		"Light187",
+		"Light188",
+		"Light189",
+		"Light190",
+		"Light191",
+		"Light192",
+		"Light193",
+		"Light194",
+		"Light195",
+		"Light196",
+		"Light197",
+		"Light198",
+		"Light199",
+		"Camera"
+	]
+}
+]

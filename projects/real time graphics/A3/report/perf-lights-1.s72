@@ -1,0 +1,142 @@
+[
+"s72-v2",
+{
+	"type": "MATERIAL",
+	"name": "lambertian:checker",
+	"lambertian": {
+		"albedo": {
+			"src": "checker.png",
+			"format": "srgb"
+		}
+	}
+},
+{
+	"type": "MESH",
+	"name": "Floor",
+	"topology": "TRIANGLE_LIST",
+	"count": 6,
+	"attributes": {
+		"POSITION": {
+			"src": "perf-test-floor.b72",
+			"offset": 0,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"NORMAL": {
+			"src": "perf-test-floor.b72",
+			"offset": 12,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"TANGENT": {
+			"src": "perf-test-floor.b72",
+			"offset": 24,
+			"stride": 48,
+			"format": "R32G32B32A32_SFLOAT"
+		},
+		"TEXCOORD": {
+			"src": "perf-test-floor.b72",
+			"offset": 40,
+			"stride": 48,
+			"format": "R32G32_SFLOAT"
+		}
+	},
+	"material": "lambertian:checker"
+},
+{
+	"type": "NODE",
+	"name": "Floor",
+	"translation": [
+		0.0,
+		0.0,
+		0.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"mesh": "Floor"
+},
+{
+	"type": "LIGHT",
+	"name": "SphereLight",
+	"tint": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"sphere": {
+		"radius": 0.0,
+		"power": 200.0,
+		"limit": 20.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Light0",
+	"translation": [
+		0.0,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "CAMERA",
+	"name": "PerfCam",
+	"perspective": {
+		"aspect": 1.0,
+		"vfov": 1.0472,
+		"near": 1.0,
+		"far": 1000.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Camera",
+	"translation": [
+		0.0,
+		0.0,
+		50.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"camera": "PerfCam"
+},
+{
+	"type": "SCENE",
+	"name": "perf-lights-1",
+	"roots": [
+		"Floor",
+		"Light0",
+		"Camera"
+	]
+}
+]

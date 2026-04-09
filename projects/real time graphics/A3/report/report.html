@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://graphics.cs.cmu.edu/courses/15-472-s26/A3/report-template.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>15-472-s26: A3 - Lights</title>
+<style>
+/* feel free to style your report in a fancier way! */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&Anonymous+Pro&display=swap');
+
+html {
+	background:#505055;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+	color:#000;
+	background:#eeeee8;
+	font-size:15px;
+	margin: 1em auto 50vh auto;
+	padding: 1em 2em 1em 2em;
+	max-width:45em;
+	border-radius:4px;
+	box-shadow:0 0 10px #0008;
+}
+
+h1 { font-size: 20px; font-weight: 700; }
+h2 { font-size: 16px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 400; }
+h4 { font-size: 14px; font-weight: 400; }
+
+h1, h2, h3, h4 {
+	margin: 15px 0 0 -10px;
+}
+
+p {
+	margin: 5px 0 0 0;
+}
+
+figure {
+	margin: 10px -2em;
+	padding: 10px 2em;
+	width:100%;
+	background:#e8e8e8;
+}
+
+figcaption {
+	font-size:14px;
+	font-style:italic;
+}
+
+.subtitle {
+	display:block;
+	font-size:16px;
+	font-weight:400;
+}
+
+.placeholder {
+	color:#800;
+	font-style:italic;
+}
+
+kbd {
+	display:inline-block;
+	background:#ccc;
+	color:#444;
+	font-style:normal;
+	font-weight:700;
+	border-radius:8px;
+	padding:1px 6px;
+	margin:1px;
+	border:1.5px solid #aaa;
+}
+
+code {
+	font-family: 'Anonymous Pro', monospace;
+	background: #222;
+	color:#fff;
+	border-radius:4px;
+	padding:2px 4px;
+	margin:1px;
+}
+
+code var {
+	color:#ef5;
+	font-style:italic;
+}
+
+.atag {
+	font-family: 'Calistoga', serif;
+	font-size:90%;
+	color:#000;
+	background:#e17dcd;
+
+	display:inline-block;
+	padding:1px 4px;
+	border-radius: 4px;
+	line-height:120%;
+}
+.atag:before {
+	content:'»';
+}
+.atag.extra {
+	background:#c6aff8;
+}
+.atag.creative {
+	background:linear-gradient(0.35turn, #fcacff, #f9ab93, #76a1e4, #20953d);
+}
+
+</style>
+<!-- Load Chart.js for creating charts (documentation https://www.chartjs.org/docs/latest/ ) -->
+<script src="./15-472-s26_ A3 - Lights_files/chart.js"></script>
+</head>
+<body>
+<h1>A3: Lights
+<span class="subtitle">by <span class="placeholder">Dennis Sun (shaoqias)</span></span>
+</h1>
+
+<!-- of course, delete these class="placeholder" notes in your report: -->
+
+
+<p>
+For this assignment I implemented a forward-rendering lighting system on top of the existing Vulkan pipeline.
+Light data (sphere, spot, and sun lights) is loaded from the <code>LIGHT</code> entries in the s72 scene file into a flat <code>Light</code> struct array (position/type, direction/shadow-slot, tint×power, and per-type parameters) and uploaded every frame as a storage buffer.
+The fragment shader loops over all lights and accumulates contributions using a Lambertian diffuse term and a GGX/Smith PBR BRDF, with environment-map IBL as a base.
+For shadows, a dedicated <code>ShadowPipeline</code> renders depth to a <code>R32_SFLOAT</code> color attachment for up to 8 spot lights per frame; the shadow maps are then sampled with 4-sample PCF and a constant depth bias.
+The extra-credit features A3x-sort, A3x-soft, A3x-cascade, and A3x-cube were not completed due to time constraints.
+</p>
+
+<h2>My Lit Scene <span class="atag creative">A3-create</span></h2>
+
+<p class="placeholder">
+Describe the scene you lit, the light count and placement approach, and include a screen recording showing it running in real-time:
+</p>
+
+<video>
+<!--
+  you can use the 'video' element to show your code running
+  Learn more at:
+    https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
+
+  Example: put the video file in a path near this .html
+  <source src="path/to/video" type="video/mp4" />
+-->
+</video>
+
+<p class="placeholder">
+Credit + cite your sources for textures and models, if you did not create them yourself.
+</p>
+
+<h3>Command-line Arguments (Viewer)</h3>
+
+<p class="placeholder">
+Document the command-line arguments that can be used to control your viewer.
+This will probably be a copy of the section from your A2 report with a few new flags relating to lights (if you added any).
+</p>
+
+<ul>
+	<li class="placeholder"><code>--scene <var>scene.s72</var></code> -- required -- load scene from <code><var>scene.s72</var></code></li>
+	<li class="placeholder"><code>--camera <var>name</var></code> -- optional -- view the scene through the camera <code><var>name</var></code></li>
+	<li class="placeholder"><code>--physical-device <var>name</var></code> -- optional -- use the physical device whose VkPhysicalDeviceProperties::deviceName matches <code><var>name</var></code></li>
+	<li class="placeholder"><code>--drawing-size <var>w</var> <var>h</var></code> -- optional -- set the initial size of the drawable part of the window in physical pixels of width <code><var>w</var></code> and height <code><var>h</var></code></li>
+	<li class="placeholder"><code>--culling <var>mode</var></code> -- optional -- sets the culling mode to be <code><var>none|frustum|bvh</var></code></li>
+	<li class="placeholder"><code>--headless </code> -- optional -- if specified, run in headless mode (no windowing system connection), and read frame times and events from standard input. In headless mode, the flag --drawing-size specifies the size of the offscreen canvas that is rendered into </li>
+	<li class="placeholder"><code>--test <var>mode</var></code> -- optional -- runs the A1-test section, <code><var>mode</var></code> can be <code><var>cpu</var></code> or <code><var>gpu</var></code>
+	Under cpu mode, the program will automatically loads the test scene for cpu "cpu-bottleneck.s72"
+	Under gpu mode, the program will load the scene from <code>--scene <var>scene.s72</var></code> argument</li>
+	<li class="placeholder"><code>--culled-count <var>number</var></code> -- optional -- combined with <code>--test <var>cpu</var></code> argument to set the number of culled objects (outside the camera frustum) in the scene</li>
+	<li class="placeholder"><code>--csv-file-name <var>file_name</var></code> -- optional -- in A1-test section, the user chosen log file name</li>
+	<li class="placeholder">
+	<code>--exposure <var>E</var></code> 
+	scale computed radiance by <code>2<sup><var>E</var></sup></code> before tone mapping.
+	This simulates camera exposure adjustment and is always applied prior to the tone-mapping operator.
+	</li>
+	<li class="placeholder">
+	<code>--tone-map <var>mode</var></code> 
+	select the tone-mapping operator used to convert HDR radiance to displayable color.
+	Supported modes are:
+	<code>linear</code> (no additional mapping after exposure) and
+	<code>reinhard</code> (nonlinear compression of high luminance values).
+	</li>
+</ul>
+
+<h2>Evidence</h2>
+
+<p class="placeholder">
+The purpose of this section is to get you to think critically about your code by providing evidence sufficient to demonstrate to course staff that it works.
+These thoughts may also help you improve the code as you work on it in the Final project and beyond.
+</p>
+
+<h3>Loading light objects <span class="atag">A3-load</span></h3> 
+
+<p>
+During scene graph traversal in <code>SceneViewer.cpp</code>, each node that references a <code>"LIGHT"</code> object is parsed and stored as a <code>LightInfo</code> struct in a flat <code>std::vector&lt;LightInfo&gt;</code>.
+The struct records the light type (sun / sphere / spot), world-space position and direction (computed from the node's transform), the <code>tint</code> color, and the type-specific intensity value — <code>strength</code> for sun lights and <code>power</code> for sphere and spot lights — kept as separate fields.
+At render time these are repacked into GPU-side <code>Light</code> structs (one storage buffer per frame) where <code>TINT_STRENGTH.xyz</code> holds the raw tint and <code>TINT_STRENGTH.w</code> holds the raw power/strength; tint and power are multiplied together in the fragment shader.
+The one exception is the sky/sun environment energy stored in the <code>World</code> uniform, where tint and strength are premultiplied into <code>SUN_ENERGY</code> / <code>SKY_ENERGY</code> at update time since those values are consumed directly without a per-light loop.
+</p>
+
+
+<h3>Adding Direct Lighting to Materials <span class="atag">A3-materials</span></h3>
+
+<p>
+All lights are passed to materials through a single GPU-side storage buffer bound at <code>set 0, binding 4</code>, shared across all draw calls in a frame.
+Each entry in the buffer is a 64-byte <code>Light</code> struct composed of four <code>vec4</code>s:
+<code>POSITION_TYPE</code> (xyz = world-space position, w = type: 0=sun, 1=sphere, 2=spot),
+<code>DIRECTION_SHADOW</code> (xyz = normalized direction, w = shadow-map slot index, or −1 if unshadowed),
+<code>TINT_STRENGTH</code> (rgb = tint, w = power/strength),
+and <code>PARAMS</code> (per-type parameters: cone angle, radius, range limit, blend factor).
+The total light count is carried in the <code>World</code> uniform buffer (<code>set 0, binding 0</code>) as <code>LIGHT_COUNT</code>, so the fragment shader knows how many entries to iterate over.
+Every frame, <code>Tutorial.cpp</code> converts the flat <code>std::vector&lt;LightInfo&gt;</code> from the scene viewer into this packed array, uploads it via a host-coherent staging buffer (<code>Lights_src</code>), and copies it to a device-local buffer (<code>Lights</code>); the descriptor is updated once when the buffer is (re)allocated and remains valid for subsequent frames until the light count grows.
+</p>
+
+<figure>
+<video width="100%" controls>
+  <source src="A3-materials 1.mp4" type="video/mp4">
+</video>
+<figcaption>Recording 1: lambertian and pbr materials under sphere, spot, and sun lights.</figcaption>
+</figure>
+
+<figure>
+<video width="100%" controls>
+  <source src="A3-materials 2.mp4" type="video/mp4">
+</video>
+<figcaption>Recording 2: lambertian and pbr materials under sphere, spot, and sun lights.</figcaption>
+</figure>
+
+<figure>
+<video width="100%" controls>
+  <source src="A3-materials 3.mp4" type="video/mp4">
+</video>
+<figcaption>Recording 3: lambertian and pbr materials under sphere, spot, and sun lights.</figcaption>
+</figure>
+
+<p>
+The test scene consists of a single 70×70 lambertian floor plane (checker texture) with N unshadowed sphere lights (radius=0, power=200, limit=20) arranged in a uniform grid 3 units above the surface, and a fixed overhead camera at [0, 0, 50] looking straight down.
+Each data point is the average <code>gpu_draw_ms</code> over 190 frames (first 10 warmup frames discarded), measured on Apple M3 Max via Vulkan timestamp queries.
+The increase is nearly linear for N ≥ 20, as expected from the per-light loop in the fragment shader.
+At the low end (N &lt; 20) the fixed GPU overhead dominates and the curve appears flat.
+Even at 1000 lights the GPU draw time is only ~4.8 ms, well under the 33 ms budget for 30 fps, so the viewer handles at least 1000 lights at a very comfortable frame rate on this hardware.
+</p>
+
+<figure>
+<canvas id="A3-light-perf" style="display: block; width: 600px; max-width: 600px; margin: 0px auto; background: rgb(255, 255, 255); box-sizing: border-box; height: 300px;" width="1050" height="525"></canvas>
+<figcaption>
+GPU draw time (ms) as a function of the number of sphere lights, measured on Apple M3 Max.
+Shadows disabled. Scene: 70×70 lambertian floor, overhead camera, N unshadowed sphere lights in a grid.
+</figcaption>
+</figure>
+<script>
+window.addEventListener('load', () => {
+	const lights     = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
+	const frameTimeL = [0.159, 0.094, 0.098, 0.100, 0.168, 0.300, 0.555, 1.006, 2.437, 4.828];
+
+	new Chart("A3-light-perf", {
+		type: "line",
+		data: {
+			labels: lights,
+			datasets: [
+				{ label: "lambertian (gpu_draw_ms)", data: frameTimeL, backgroundColor:'#f00', borderColor:'#f00', tension: 0.1 },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "Lighting Performance (GPU draw time vs. light count)" },
+				legend: { display: true, onClick:()=>{} },
+			},
+			scales: {
+				y:{
+					min: 0,
+					title: { display:true, text:"gpu draw time (ms)" },
+				},
+				x:{
+					title: { display:true, text:"number of lights" },
+				},
+			},
+			animation: false,
+		}
+	});
+});
+</script>
+
+<h3>Adding Shadows for Spot Lights <span class="atag">A3-shadows</span></h3>
+
+<p>
+Shadow maps are rendered at the very beginning of each frame's command buffer, before the main color pass.
+For each spot light whose <code>"shadow"</code> field is non-zero, a dedicated <code>ShadowPipeline</code> render pass draws all scene geometry into a <code>shadow × shadow</code> <code>R32_SFLOAT</code> color attachment (plus a <code>D32_SFLOAT</code> depth attachment for hardware depth testing).
+Writing depth to a float color attachment — rather than sampling a depth-format image — avoids macOS/MoltenVK restrictions on depth texture sampling.
+The shadow camera is set up each frame with a perspective projection whose field of view matches the spot light's <code>fov</code>, near plane = <code>max(radius, 1.0)</code>, far plane = <code>limit</code> (or 1000 if unlimited), and a <code>lookAt</code> aimed along the spot's emission direction.
+The world-to-clip matrix for each shadow slot is also uploaded to a <code>ShadowMatricesUniform</code> buffer (<code>set 0, binding 6</code>) so the main pass can reproject surface points into shadow space.
+</p>
+<p>
+To avoid shadow acne the shadow pipeline culls back faces (<code>VK_CULL_MODE_BACK_BIT</code>), which means only the front surfaces of occluders are stored in the map, naturally pushing the stored depth away from self-shadowing surfaces.
+No hardware depth bias is applied at rasterization time; instead a constant bias of <code>0.001</code> is subtracted from the surface's shadow-space depth at sample time in <code>objects.frag</code> before comparing against the stored value.
+</p>
+<p>
+The shadow maps are provided to materials as a fixed-size array <code>sampler2D SHADOW_MAPS[8]</code> bound at <code>set 0, binding 5</code>.
+Unused slots are filled with a 1×1 dummy white texture so all 8 descriptor slots are always valid.
+Each spot light stores its assigned slot index in <code>DIRECTION_SHADOW.w</code>; a value of −1 means unshadowed and the shadow lookup is skipped entirely.
+</p>
+<p>
+The PCF filter takes <strong>4 samples</strong> arranged in a 2×2 sub-pixel kernel with offsets (±0.5, ±0.5) texels.
+Each sample performs a manual depth comparison (<code>(ref_depth − bias) ≤ stored_depth ? 1.0 : 0.0</code>) and the four results are averaged with equal weight (multiplied by 0.25), producing a soft penumbra one texel wide at shadow map boundaries.
+</p>
+
+
+<figure>
+<img src="A3-shadows far.png" style="width:100%;">
+<figcaption>Spot light shadows on both lambertian (checker) and pbr (stone tiles) materials — wide view.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows close.png" style="width:100%;">
+<figcaption>Spot light shadows on both lambertian and pbr materials — close-up view.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows 32.png" style="width:100%;">
+<figcaption>Shadow map resolution: 32×32 — heavily pixelated shadow edges.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows 64.png" style="width:100%;">
+<figcaption>Shadow map resolution: 64×64.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows 128.png" style="width:100%;">
+<figcaption>Shadow map resolution: 128×128.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows 256.png" style="width:100%;">
+<figcaption>Shadow map resolution: 256×256.</figcaption>
+</figure>
+
+<figure>
+<img src="A3-shadows 512.png" style="width:100%;">
+<figcaption>Shadow map resolution: 512×512 — smooth shadow edges.</figcaption>
+</figure>
+
+<p class="placeholder">
+Include a graph showing the performance impact of adding shadowing to lights to a scene.
+Attempt to separate the performance impact of shadow map rendering and shadow map sampling (e.g., by testing the same scenes with per-frame rendered shadow maps and pre-rendered shadow maps). Which is larger?
+</p>
+
+
+
+<h3>Extra: Light Sort <span class="atag extra">A3x-sort</span></h3>
+
+<p class="placeholder">
+Cover, at least:
+your chosen method for sorting lights to meshes.
+</p>
+<p class="placeholder">
+Build a scene in which your light sorting technique provides a performance improvement over rendering all meshes with all lights.
+Include a screen shot (and the scene itself).
+</p>
+<p class="placeholder">
+Include data demonstrating the performance improvement in rendering this scene.
+E.g., a graph of the frame times for an animated fly-through of the scene with and without your sorting code enabled.
+</p>
+
+<h3>Extra: PCSS Soft Shadows <span class="atag extra">A3x-soft</span></h3>
+
+<p class="placeholder">
+Cover, at least:
+your implementation of PCSS (sampling pattern, counts)
+</p>
+
+<p class="placeholder">
+Include images showing the same shadows rendered with and without PCSS, showing the spreading behavior as the shadow stretches further from the light.
+</p>
+
+<h3>Extra: Shadows for Sun Lights <span class="atag extra">A3x-cascade</span></h3>
+
+<p class="placeholder">
+Cover, at least:
+your choice of shadow map cascade levels and layout;
+how your cascade is packed into a texture;
+how [if at all] your cascade avoids "boiling" as the camera moves
+</p>
+
+<p class="placeholder">
+Include images showing a scene rendered with a shadow-casting distant directional light.
+Include images with a modified shader color-coding pixels by what cascade level they are sampling.
+Include images from a debug camera, showing how the shadow map cascade fits the camera frustum.
+</p>
+
+<h3>Extra: Shadows for Sphere Lights <span class="atag extra">A3x-cube</span></h3>
+
+<p class="placeholder">
+Cover, at least:
+how you chose to set up cameras for cube map rendering
+</p>
+
+<p class="placeholder">
+Include images or video showing a scene rendered with a shadow-casting sphere light.
+Show that there are no artifacts at the edges or corners of the shadow map cube.
+</p>
+
+
+<h3>Extra: Other <span class="atag extra">A3x-*</span></h3>
+
+<p class="placeholder">
+If you have received instructor permission to pursue another extra credit activity, include information about that activity here.
+</p>
+
+
+
+<p class="placeholder">
+Include images or video showing a scene rendered with a shadow-casting sphere light.
+Show that there are no artifacts at the edges or corners of the shadow map cube.
+</p>
+
+
+
+<h2>Feedback</h2>
+<p class="placeholder">
+This is the end of the structured report. Feel free to add feedback about A1 to this section.
+</p>
+
+
+
+</body></html>

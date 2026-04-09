@@ -1,0 +1,1220 @@
+[
+"s72-v2",
+{
+	"type": "MATERIAL",
+	"name": "lambertian:checker",
+	"lambertian": {
+		"albedo": {
+			"src": "checker.png",
+			"format": "srgb"
+		}
+	}
+},
+{
+	"type": "MESH",
+	"name": "Floor",
+	"topology": "TRIANGLE_LIST",
+	"count": 6,
+	"attributes": {
+		"POSITION": {
+			"src": "perf-test-floor.b72",
+			"offset": 0,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"NORMAL": {
+			"src": "perf-test-floor.b72",
+			"offset": 12,
+			"stride": 48,
+			"format": "R32G32B32_SFLOAT"
+		},
+		"TANGENT": {
+			"src": "perf-test-floor.b72",
+			"offset": 24,
+			"stride": 48,
+			"format": "R32G32B32A32_SFLOAT"
+		},
+		"TEXCOORD": {
+			"src": "perf-test-floor.b72",
+			"offset": 40,
+			"stride": 48,
+			"format": "R32G32_SFLOAT"
+		}
+	},
+	"material": "lambertian:checker"
+},
+{
+	"type": "NODE",
+	"name": "Floor",
+	"translation": [
+		0.0,
+		0.0,
+		0.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"mesh": "Floor"
+},
+{
+	"type": "LIGHT",
+	"name": "SphereLight",
+	"tint": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"sphere": {
+		"radius": 0.0,
+		"power": 200.0,
+		"limit": 20.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Light0",
+	"translation": [
+		-30.625,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light1",
+	"translation": [
+		-21.875,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light2",
+	"translation": [
+		-13.125,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light3",
+	"translation": [
+		-4.375,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light4",
+	"translation": [
+		4.375,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light5",
+	"translation": [
+		13.125,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light6",
+	"translation": [
+		21.875,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light7",
+	"translation": [
+		30.625,
+		-26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light8",
+	"translation": [
+		-30.625,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light9",
+	"translation": [
+		-21.875,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light10",
+	"translation": [
+		-13.125,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light11",
+	"translation": [
+		-4.375,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light12",
+	"translation": [
+		4.375,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light13",
+	"translation": [
+		13.125,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light14",
+	"translation": [
+		21.875,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light15",
+	"translation": [
+		30.625,
+		-17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light16",
+	"translation": [
+		-30.625,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light17",
+	"translation": [
+		-21.875,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light18",
+	"translation": [
+		-13.125,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light19",
+	"translation": [
+		-4.375,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light20",
+	"translation": [
+		4.375,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light21",
+	"translation": [
+		13.125,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light22",
+	"translation": [
+		21.875,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light23",
+	"translation": [
+		30.625,
+		-8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light24",
+	"translation": [
+		-30.625,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light25",
+	"translation": [
+		-21.875,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light26",
+	"translation": [
+		-13.125,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light27",
+	"translation": [
+		-4.375,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light28",
+	"translation": [
+		4.375,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light29",
+	"translation": [
+		13.125,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light30",
+	"translation": [
+		21.875,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light31",
+	"translation": [
+		30.625,
+		0.0,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light32",
+	"translation": [
+		-30.625,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light33",
+	"translation": [
+		-21.875,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light34",
+	"translation": [
+		-13.125,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light35",
+	"translation": [
+		-4.375,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light36",
+	"translation": [
+		4.375,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light37",
+	"translation": [
+		13.125,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light38",
+	"translation": [
+		21.875,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light39",
+	"translation": [
+		30.625,
+		8.75,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light40",
+	"translation": [
+		-30.625,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light41",
+	"translation": [
+		-21.875,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light42",
+	"translation": [
+		-13.125,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light43",
+	"translation": [
+		-4.375,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light44",
+	"translation": [
+		4.375,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light45",
+	"translation": [
+		13.125,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light46",
+	"translation": [
+		21.875,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light47",
+	"translation": [
+		30.625,
+		17.5,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light48",
+	"translation": [
+		-30.625,
+		26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "NODE",
+	"name": "Light49",
+	"translation": [
+		-21.875,
+		26.25,
+		3.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"light": "SphereLight"
+},
+{
+	"type": "CAMERA",
+	"name": "PerfCam",
+	"perspective": {
+		"aspect": 1.0,
+		"vfov": 1.0472,
+		"near": 1.0,
+		"far": 1000.0
+	}
+},
+{
+	"type": "NODE",
+	"name": "Camera",
+	"translation": [
+		0.0,
+		0.0,
+		50.0
+	],
+	"rotation": [
+		0.0,
+		0.0,
+		0.0,
+		1.0
+	],
+	"scale": [
+		1.0,
+		1.0,
+		1.0
+	],
+	"camera": "PerfCam"
+},
+{
+	"type": "SCENE",
+	"name": "perf-lights-50",
+	"roots": [
+		"Floor",
+		"Light0",
+		"Light1",
+		"Light2",
+		"Light3",
+		"Light4",
+		"Light5",
+		"Light6",
+		"Light7",
+		"Light8",
+		"Light9",
+		"Light10",
+		"Light11",
+		"Light12",
+		"Light13",
+		"Light14",
+		"Light15",
+		"Light16",
+		"Light17",
+		"Light18",
+		"Light19",
+		"Light20",
+		"Light21",
+		"Light22",
+		"Light23",
+		"Light24",
+		"Light25",
+		"Light26",
+		"Light27",
+		"Light28",
+		"Light29",
+		"Light30",
+		"Light31",
+		"Light32",
+		"Light33",
+		"Light34",
+		"Light35",
+		"Light36",
+		"Light37",
+		"Light38",
+		"Light39",
+		"Light40",
+		"Light41",
+		"Light42",
+		"Light43",
+		"Light44",
+		"Light45",
+		"Light46",
+		"Light47",
+		"Light48",
+		"Light49",
+		"Camera"
+	]
+}
+]
