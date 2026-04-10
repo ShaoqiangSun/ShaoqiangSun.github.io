@@ -141,6 +141,27 @@ One limitation is that displacement is not yet applied in shading and I didn't h
 Describe the model and texture you created and include a screen recording showing it running in real-time:
 </p>
 
+<p>
+I created a tree trunk model with detailed bark surface using a high-poly to low-poly workflow.<br>
+The final rendered result shows a cylindrical trunk with visible growth rings on the top surface and vertical bark patterns along the sides.<br>
+These details are represented through a normal map rather than explicit geometry, allowing the model to remain efficient while still conveying rich surface detail.
+</p>
+<br>
+<p>
+The normal map captures both radial patterns (tree rings) and directional patterns (bark grooves), which respond to lighting in real-time shading.<br>
+When rendered with environment lighting in the viewer, the surface exhibits clear shading variation based on the simulated microstructure, demonstrating the effectiveness of tangent-space normal mapping.
+</p>
+<br>
+<p>
+In the video, the left tree trunk is the low-poly model with a baked normal map, while the right tree trunk is the high-poly model.<br>
+This comparison demonstrates how normal mapping preserves the appearance of detailed bark structure on the low-poly mesh while keeping the geometry much simpler for real-time rendering.
+</p>
+
+<video controls preload="metadata" style="max-width:100%; height:auto;">
+  <source src="A2 Create.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 <video>
 <!--
   you can use the 'video' element to show your code running
@@ -154,6 +175,37 @@ Describe the model and texture you created and include a screen recording showin
 
 <p class="placeholder">
 Describe your creation process for the model and texture.
+</p>
+<br>
+<p>
+The model and texture were created using a high-poly sculpting and baking workflow in Blender.
+</p>
+<br>
+<p>
+First, I created a high-poly version of the tree trunk by starting from a cylinder and applying subdivision surface to increase its geometric resolution.<br>
+On top of this subdivided mesh, I used sculpt mode to add detailed surface features.<br>
+The bark patterns were sculpted primarily using the Crease Sharp brushes to carve out strong vertical grooves and define the structure of the bark.<br>
+On the top surface, circular patterns were sculpted to represent tree growth rings, focusing on capturing fine geometric detail in the high-poly model.
+</p>
+<br>
+<p>
+Next, I created a corresponding low-poly version of the trunk, keeping the geometry simple to ensure efficient rendering.<br>
+The low-poly mesh was unwrapped using UV mapping to prepare it for texture baking.
+</p>
+<br>
+<p>
+Then, I baked a tangent-space normal map from the high-poly model onto the low-poly model.<br>
+This process transfers the high-frequency geometric detail into a texture.<br>
+The baked normal map was saved as an external image and assigned to the material in Blender using a Normal Map node connected to the Principled BSDF shader.
+</p>
+<br>
+<p>
+Finally, I exported the model and material into the S72 format using the provided exporter.<br>
+This required ensuring that the material followed the expected naming convention (e.g., <code>pbr:trunk_lowpoly</code>) and that the normal map texture had a valid external file path so it could be correctly referenced in the exported scene.
+</p>
+<br>
+<p>
+This workflow allows the final rendered result to preserve the appearance of complex geometry while maintaining real-time performance.
 </p>
 
 <h2>Using the Cube Utility</h2>
@@ -413,6 +465,41 @@ Provide evidence that your <code>"lambertian"</code> material works.
 Plot timings for your Lambertian cube map pre-filtering as applied to various cube sizes.
 </p>
 
+<figure>
+<canvas id="A2-lambertian-timing" style="display:block;width:600px;max-width:600px;margin:0 auto;background:#fff;height:300px;"></canvas>
+<figcaption>
+Lambertian cube map pre-filtering timings for various cube sizes.
+</figcaption>
+
+<script>
+window.addEventListener('load', () => {
+	const cubeSizes = [4, 8, 16, 32, 64];
+	const timingsMs = [1.47088, 16.9419, 262.829, 4061.57, 64362.6];
+
+	new Chart("A2-lambertian-timing", {
+		type: "line",
+		data: {
+			labels: cubeSizes,
+			datasets: [
+				{ label: "Lambertian prefilter time (ms)", data: timingsMs },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "Lambertian Cube Map Prefilter Timing" },
+				legend: { display: true, onClick:()=>{} },
+			},
+			scales: {
+				y: { title: { display: true, text: "time (ms)" } },
+				x: { title: { display: true, text: "cube size" } },
+			},
+			animation: false,
+		}
+	});
+});
+</script>
+</figure>
+
 <h3>Normal Mapping <span class="atag">A2-normal</span></h3>
 
 <p class="placeholder">
@@ -531,6 +618,53 @@ Provide evidence that your cube utility is able to correctly pre-integrate the e
 <p class="placeholder">
 Provide charts of timings characterizing the performance of your cube utility.
 </p>
+
+<figure>
+<canvas id="A2-ggx-timing" style="display:block;width:600px;max-width:600px;margin:0 auto;background:#fff;height:300px;"></canvas>
+<figcaption>
+GGX prefiltered cube map timings for different mip levels (varying roughness).
+</figcaption>
+
+<script>
+window.addEventListener('load', () => {
+
+	const mipLevels = [1,2,3,4,5,6,7,8,9,10];
+	const timingsMs = [
+		88592.9,
+		22122.7,
+		5522.77,
+		1382.87,
+		348.312,
+		83.5521,
+		19.1252,
+		4.6505,
+		1.09,
+		0.309583
+	];
+
+	new Chart("A2-ggx-timing", {
+		type: "line",
+		data: {
+			labels: mipLevels,
+			datasets: [
+				{ label: "GGX prefilter time (ms)", data: timingsMs },
+			]
+		},
+		options: {
+			plugins: {
+				title: { display: true, text: "GGX Prefilter Timing per Mip Level" },
+				legend: { display: true, onClick:()=>{} },
+			},
+			scales: {
+				y: { title: { display: true, text: "time (ms)" } },
+				x: { title: { display: true, text: "mip level" } },
+			},
+			animation: false,
+		}
+	});
+});
+</script>
+</figure>
 
 <h3>Displacement Mapping <span class="atag">A2x-displacement</span></h3>
 
