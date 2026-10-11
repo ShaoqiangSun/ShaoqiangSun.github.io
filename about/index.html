@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Me</title>
+  <style>
+    /* 页面整体样式 */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      /* 将背景图片地址替换为你的图片路径或 URL */
+      background: url("DSC_7992.JPG") no-repeat center center fixed;
+      /* 保持照片比例铺满屏幕，避免背景被横向拉伸 */
+      background-size: cover;
+      color: #333;
+    }
+
+    .about-wrapper {
+      display: grid;
+      grid-template-columns: minmax(220px, 360px) minmax(0, 620px);
+      justify-content: space-between;
+      align-items: center;
+      gap: clamp(60px, 10vw, 180px);
+      min-height: calc(100vh - 60px);
+      margin: 0 auto;
+      max-width: 1500px;
+      padding: clamp(40px, 6vh, 80px) clamp(32px, 6vw, 100px);
+      box-sizing: border-box;
+      /* 可以使用半透明背景或其他方式让文字更容易阅读 */
+      background-color: rgba(255, 255, 255, 0);
+      border-radius: 8px;
+    }
+
+    /* 个人照片部分 */
+    .profile-img {
+      /* 这里可以根据需求设置图片的大小，比如固定宽度、高度自适应，或设置固定的宽高 */
+      width: 100%;          /* 放在画面左侧，避开背景的视觉中心 */
+      height: auto;         /* 高度自适应，或根据需要设置固定高度 */
+      border-radius: 0;     /* 删除圆形头像效果 */
+      overflow: hidden;
+      margin: 0;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.28);
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: auto;      /* 保证图片宽度自适应并保持比例 */
+      display: block;
+      object-fit: cover; /* 让图片填充容器，可能会被裁切 */
+    }
+
+    /* 文本介绍部分 */
+    .about-text {
+      max-width: 600px;
+      text-align: left;
+      line-height: 1.6;
+      color: #FFF;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+
+    }
+
+    .about-text h1 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: normal;
+      letter-spacing: 2px;
+
+      
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      
+      font-size: 1.4em;
+    }
+
+    /* 个性化签名，可以使用艺术字体 */
+    .signature {
+      margin-top: 40px;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 2em;
+      color: #555;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5em;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      margin-left: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 1.1em;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #666;
+    }
+
+    .nav-links a.active {
+      color: #111;
+      font-weight: 600;
+      border-bottom: 2px solid #333;
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        background-position: center center;
+      }
+
+      .about-wrapper {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        gap: 32px;
+        padding: 36px 24px 56px;
+      }
+
+      .profile-img {
+        width: min(62vw, 260px);
+      }
+
+      .about-text {
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.42);
+        border-radius: 8px;
+      }
+    }
+  </style>
+</head>
+<body style="padding-top: 60px;">
+
+  <div class="navbar">
+    <a class="logo" href="../index.html">Dennis' Website</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">About Me</a>
+      <a href="../reel/index.html">Demo Reel</a>
+      <a href="../projects/index.html">Projects</a>
+      <a href="../photography/index.html">Photography Gallery</a>
+      <a href="../contact/index.html">Contact</a>
+    </div>
+  </div>
+
+  <div class="about-wrapper">
+    <!-- 个人照片 -->
+    <div class="profile-img">
+      <img src="Self Portrait.JPG" alt="Portrait of Dennis Sun" />
+    </div>
+
+    <!-- 文本介绍 -->
+    <div class="about-text">
+      <h1>Dennis Sun</h1>
+      <p>
+        I am a passionate Rendering Engineer and Technical Artist with experience in Unity and Unreal Engine. 
+        My expertise lies in computer graphics and visual effects, and I’m driven to create immersive, visually striking VFX that captivate audiences and bring virtual worlds to life.
+      </p>
+      <p>
+        <!-- 如果想让页面更具艺术感，可以根据自己的审美在背景和字体上做更多个性化调整。
+        你也可以在此处添加一些链接，便于读者进一步了解你的作品和项目。 -->
+      </p>
+      <div class="signature">
+        <!-- [Dennis Sun] -->
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

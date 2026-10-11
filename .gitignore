@@ -1,0 +1,14 @@
+# macOS metadata
+.DS_Store
+
+# Visual Studio workspace/cache files
+.vs/
+*.sqlite
+*.vsidx
+*.wsuo
+
+# Common local editor and Python caches
+.vscode/
+.idea/
+__pycache__/
+*.py[cod]
